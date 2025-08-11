@@ -7,18 +7,22 @@ public class Game {
     private Team homeTeam;
     private Team awayTeam;
     private LocalDate scheduled;
+    private String status;
     private int homeScore;
     private int awayScore;
+    private int seasonYear;
 
     public Game() {};
 
-    public Game(String id, Team homeTeam, Team awayTeam, LocalDate scheduled, int homeScore, int awayScore) {
+    public Game(String id, Team homeTeam, Team awayTeam, LocalDate scheduled, String status, int homeScore, int awayScore, int seasonYear) {
         this.id = id;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.scheduled = scheduled;
+        this.status = status;
         this.homeScore = homeScore;
         this.awayScore = awayScore;
+        this.seasonYear = seasonYear;
     }
 
     public String getId() {
@@ -53,6 +57,14 @@ public class Game {
         this.scheduled = scheduled;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public int getHomeScore() {
         return homeScore;
     }
@@ -67,5 +79,13 @@ public class Game {
 
     public void setAwayScore(int awayScore) {
         this.awayScore = awayScore;
+    }
+
+    public int getSeasonYear() {
+        return seasonYear;
+    }
+
+    public void setSeasonYear(int seasonYear) {
+        this.seasonYear = seasonYear;
     }
 }

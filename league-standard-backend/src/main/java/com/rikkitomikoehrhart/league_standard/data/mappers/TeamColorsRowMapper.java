@@ -1,17 +1,21 @@
 package com.rikkitomikoehrhart.league_standard.data.mappers;
 
 import com.rikkitomikoehrhart.league_standard.model.Team;
+import com.rikkitomikoehrhart.league_standard.model.TeamColors;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class TeamRowMapper implements RowMapper<Team> {
+public class TeamColorsRowMapper implements RowMapper<TeamColors> {
 
     @Override
-    public Team mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Team team = new Team();
+    public TeamColors mapRow(ResultSet rs, int rowNum) throws SQLException {
+        TeamColors teamColors = new TeamColors();
 
+        teamColors.setId(rs.getString("team_colors_id"));
+
+        Team team = new Team();
         team.setId(rs.getString("team_id"));
         team.setAlias(rs.getString("alias"));
         team.setMarket(rs.getString("market"));
@@ -19,7 +23,11 @@ public class TeamRowMapper implements RowMapper<Team> {
         team.setYearFounded(rs.getInt("year_founded"));
         team.setMascot(rs.getString("mascot"));
         team.setOwner(rs.getString("owner"));
+        teamColors.setTeam(team);
 
-        return team;
+        teamColors.setColorType(rs.getString("color_type"));
+        teamColors.setHexCode(rs.getString("hex_code"));
+
+        return teamColors;
     }
 }
