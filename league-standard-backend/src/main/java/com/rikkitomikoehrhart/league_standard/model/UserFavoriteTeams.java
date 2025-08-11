@@ -1,21 +1,21 @@
 package com.rikkitomikoehrhart.league_standard.model;
 
 public class UserFavoriteTeams {
-    private int id;
+    private String id;
     private Team team;
 
     public UserFavoriteTeams() {};
 
-    public UserFavoriteTeams(int id, Team team) {
+    public UserFavoriteTeams(String id, Team team) {
         this.id = id;
         this.team = team;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

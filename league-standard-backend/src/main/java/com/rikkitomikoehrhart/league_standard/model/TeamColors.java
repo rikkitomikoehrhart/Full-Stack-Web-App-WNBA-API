@@ -1,25 +1,25 @@
 package com.rikkitomikoehrhart.league_standard.model;
 
 public class TeamColors {
-    private int id;
+    private String id;
     private Team team;
     private String colorType;
     private String hexCode;
 
     public TeamColors() {};
 
-    public TeamColors(int id, Team team, String colorType, String hexCode) {
+    public TeamColors(String id, Team team, String colorType, String hexCode) {
         this.id = id;
         this.team = team;
         this.colorType = colorType;
         this.hexCode = hexCode;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,7 +1,7 @@
 package com.rikkitomikoehrhart.league_standard.model;
 
 public class Team {
-    private int id;
+    private String id;
     private String alias;
     private String market;
     private String name;
@@ -10,7 +10,7 @@ public class Team {
 
     public Team() {};
 
-    public Team(int id, String alias, String market, String name, int yearFounded, String mascot) {
+    public Team(String id, String alias, String market, String name, int yearFounded, String mascot) {
         this.id = id;
         this.alias = alias;
         this.market = market;
@@ -19,11 +19,11 @@ public class Team {
         this.mascot = mascot;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

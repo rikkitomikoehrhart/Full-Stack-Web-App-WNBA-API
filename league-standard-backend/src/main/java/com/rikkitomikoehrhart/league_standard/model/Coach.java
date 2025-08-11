@@ -1,7 +1,7 @@
 package com.rikkitomikoehrhart.league_standard.model;
 
 public class Coach {
-    private int id;
+    private String id;
     private Team team;
     private String firstName;
     private String lastName;
@@ -9,7 +9,7 @@ public class Coach {
 
     public Coach() {};
 
-    public Coach(int id, Team team, String firstName, String lastName, String position) {
+    public Coach(String id, Team team, String firstName, String lastName, String position) {
         this.id = id;
         this.team = team;
         this.firstName = firstName;
@@ -17,11 +17,11 @@ public class Coach {
         this.position = position;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
