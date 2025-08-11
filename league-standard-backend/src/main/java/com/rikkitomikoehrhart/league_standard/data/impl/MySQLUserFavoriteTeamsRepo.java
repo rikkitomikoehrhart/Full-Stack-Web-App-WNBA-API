@@ -14,7 +14,7 @@ public class MySQLUserFavoriteTeamsRepo implements UserFavoriteTeamsRepo {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public UserFavoriteTeams getUserFavoriteTeamsByID(int id) {
+    public UserFavoriteTeams getUserFavoriteTeamsByID(String id) {
         return null;
     }
 
@@ -34,7 +34,7 @@ public class MySQLUserFavoriteTeamsRepo implements UserFavoriteTeamsRepo {
     }
 
     @Override
-    public UserFavoriteTeams deleteUserFavoriteTeams(int id) {
+    public UserFavoriteTeams deleteUserFavoriteTeams(String id) {
         return null;
     }
 }

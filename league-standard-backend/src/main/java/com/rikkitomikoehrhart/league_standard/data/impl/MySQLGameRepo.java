@@ -14,7 +14,7 @@ public class MySQLGameRepo implements GameRepo {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Game getGameByID(int id) {
+    public Game getGameByID(String id) {
         return null;
     }
 
@@ -34,7 +34,7 @@ public class MySQLGameRepo implements GameRepo {
     }
 
     @Override
-    public Game deleteGame(int id) {
+    public Game deleteGame(String id) {
         return null;
     }
 }

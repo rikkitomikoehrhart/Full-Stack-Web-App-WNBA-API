@@ -14,7 +14,7 @@ public class MySQLTeamRepo implements TeamRepo {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Team getTeamByID(int id) {
+    public Team getTeamByID(String id) {
         return null;
     }
 
@@ -34,7 +34,7 @@ public class MySQLTeamRepo implements TeamRepo {
     }
 
     @Override
-    public Team deleteTeam(int id) {
+    public Team deleteTeam(String id) {
         return null;
     }
 }

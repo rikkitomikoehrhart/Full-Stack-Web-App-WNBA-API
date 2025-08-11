@@ -14,7 +14,7 @@ public class MySQLCoachRepo implements CoachRepo {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Coach getCoachByID(int id) {
+    public Coach getCoachByID(String id) {
         return null;
     }
 
@@ -34,7 +34,7 @@ public class MySQLCoachRepo implements CoachRepo {
     }
 
     @Override
-    public Coach deleteCoach(int id) {
+    public Coach deleteCoach(String id) {
         return null;
     }
 }

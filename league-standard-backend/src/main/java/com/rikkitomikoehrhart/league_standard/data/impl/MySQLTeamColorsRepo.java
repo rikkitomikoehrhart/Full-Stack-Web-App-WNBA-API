@@ -14,7 +14,7 @@ public class MySQLTeamColorsRepo implements TeamColorsRepo {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public TeamColors getTeamColorsByID(int id) {
+    public TeamColors getTeamColorsByID(String id) {
         return null;
     }
 
@@ -34,7 +34,7 @@ public class MySQLTeamColorsRepo implements TeamColorsRepo {
     }
 
     @Override
-    public TeamColors deleteTeamColors(int id) {
+    public TeamColors deleteTeamColors(String id) {
         return null;
     }
 }

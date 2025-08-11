@@ -5,9 +5,9 @@ import com.rikkitomikoehrhart.league_standard.model.Game;
 import java.util.List;
 
 public interface GameRepo {
-    public Game getGameByID(int id);
+    public Game getGameByID(String id);
     public List<Game> getAllGames();
     public Game addGame(Game game);
     public void updateGame(Game game);
-    public Game deleteGame(int id);
+    public Game deleteGame(String id);
 }
