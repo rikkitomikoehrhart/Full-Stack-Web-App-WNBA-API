@@ -110,6 +110,7 @@ public class APIService {
 
             String scheduledStr = gameNode.get("scheduled").asText();
             LocalDate scheduledDate = LocalDate.parse(scheduledStr.substring(0, 10));
+            game.setScheduled(scheduledDate);
 
             return game;
         } catch (Exception e) {

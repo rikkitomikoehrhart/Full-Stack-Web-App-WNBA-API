@@ -9,5 +9,5 @@ public interface GameRepo {
     public List<Game> getAllGames();
     public Game addGame(Game game);
     public void updateGame(Game game);
-    public Game deleteGame(String id);
+    public void deleteGame(String id);
 }

@@ -88,4 +88,13 @@ public class Game {
     public void setSeasonYear(int seasonYear) {
         this.seasonYear = seasonYear;
     }
+
+
+    public String getHomeTeamID() {
+        return homeTeam.getId();
+    }
+
+    public String getAwayTeamID() {
+        return awayTeam.getId();
+    }
 }
