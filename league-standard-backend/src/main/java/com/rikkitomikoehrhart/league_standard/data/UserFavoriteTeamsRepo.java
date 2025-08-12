@@ -9,5 +9,5 @@ public interface UserFavoriteTeamsRepo {
     public List<UserFavoriteTeams> getAllUserFavoriteTeams();
     public UserFavoriteTeams addUserFavoriteTeam(UserFavoriteTeams userFavoriteTeams);
     public void updateUserFavoriteTeams(UserFavoriteTeams userFavoriteTeams);
-    public UserFavoriteTeams deleteUserFavoriteTeams(String id);
+    public void deleteUserFavoriteTeams(String id);
 }

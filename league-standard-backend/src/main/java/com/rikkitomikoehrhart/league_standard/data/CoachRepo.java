@@ -9,5 +9,5 @@ public interface CoachRepo {
     public List<Coach> getAllCoaches();
     public Coach addCoach(Coach coach);
     public void updateCoach(Coach coach);
-    public Coach deleteCoach(String id);
+    public void deleteCoach(String id);
 }

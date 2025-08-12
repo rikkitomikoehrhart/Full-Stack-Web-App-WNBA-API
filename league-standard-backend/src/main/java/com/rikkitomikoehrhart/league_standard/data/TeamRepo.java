@@ -9,5 +9,5 @@ public interface TeamRepo {
     public List<Team> getAllTeams();
     public Team addTeam(Team team);
     public void updateTeam(Team team);
-    public Team deleteTeam(String id);
+    public void deleteTeam(String id);
 }

@@ -74,20 +74,20 @@ public class MySQLGameRepo implements GameRepo {
     public void updateGame(Game game) {
         String sql = """
         UPDATE 'games'
-        SET id = ?, home_team_id = ?, away_team_id = ?, scheduled_date = ?, status = ?, home_score = ?, away_score = ?, season_year = ?
+        SET home_team_id = ?, away_team_id = ?, scheduled_date = ?, status = ?, home_score = ?, away_score = ?, season_year = ?
         WHERE id = ?
         """;
 
         try {
             jdbcTemplate.update(sql,
-                    game.getId(),
                     game.getHomeTeamID(),
                     game.getAwayTeamID(),
                     game.getScheduled(),
                     game.getStatus(),
                     game.getHomeScore(),
                     game.getAwayScore(),
-                    game.getSeasonYear());
+                    game.getSeasonYear(),
+                    game.getId());
         } catch (Exception e) {
             System.err.println("Error updating game: " + e.getMessage());
         }

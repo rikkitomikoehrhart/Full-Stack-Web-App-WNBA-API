@@ -9,5 +9,5 @@ public interface TeamColorsRepo {
     public List<TeamColors> getAllTeamColors();
     public TeamColors addTeamColors(TeamColors teamColors);
     public void updateTeamColors(TeamColors teamColors);
-    public TeamColors deleteTeamColors(String id);
+    public void deleteTeamColors(String id);
 }

@@ -56,4 +56,8 @@ public class Coach {
     public void setPosition(String position) {
         this.position = position;
     }
+
+    public String getTeamID() {
+        return team.getId();
+    }
 }

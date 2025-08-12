@@ -34,7 +34,7 @@ public class MySQLUserFavoriteTeamsRepo implements UserFavoriteTeamsRepo {
     }
 
     @Override
-    public UserFavoriteTeams deleteUserFavoriteTeams(String id) {
-        return null;
+    public void deleteUserFavoriteTeams(String id) {
+
     }
 }

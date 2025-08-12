@@ -46,4 +46,9 @@ public class TeamColors {
     public void setHexCode(String hexCode) {
         this.hexCode = hexCode;
     }
+
+
+    public String getTeamID() {
+        return team.getId();
+    }
 }

@@ -34,7 +34,7 @@ public class MySQLTeamRepo implements TeamRepo {
     }
 
     @Override
-    public Team deleteTeam(String id) {
-        return null;
+    public void deleteTeam(String id) {
+
     }
 }
