@@ -3,19 +3,19 @@ import Loading from '../UI/Loading';
 
 function TeamsList() {
     const [teams, setTeams] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch("http://localhost:8080/api/teams")
             .then(res => res.json())
             .then(data => {
                 setTeams(data)
-                setLoading(false)
+                setIsLoading(false)
             })
             .catch(err => console.error('Error: ', err))
     }, [])
 
-    if (loading) {
+    if (isLoading) {
         return (
             <Loading />
         )

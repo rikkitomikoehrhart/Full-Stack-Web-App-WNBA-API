@@ -1,10 +1,11 @@
-import TeamsList from "./components/Teams/TeamsList";
+import GamesList from "./components/Games/GamesList";
+
 
 function App() {
 
   return (
     <>
-      <TeamsList />
+      <GamesList />
     </>
   );
 
