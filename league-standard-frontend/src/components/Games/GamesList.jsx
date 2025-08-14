@@ -36,10 +36,10 @@ function GamesList() {
     return (
         <>
             <div>
-                <button type="button" className='m-2 btn btn-outline-success' onClick={showAllGames}>All Games</button>
-                <button type="button" className='m-2 btn btn-outline-success' onClick={showUpcomingGames}>Upcoming Games</button>
+                <button type="button" className='mt-4 ms-5 mb-0 btn btn-outline-success' onClick={showAllGames}>All Games</button>
+                <button type="button" className='mt-4 ms-2 mb-0 btn btn-outline-success' onClick={showUpcomingGames}>Upcoming Games</button>
                 {games.map(game => (
-                    <div key={game.id} className="m-5 card text-center">
+                    <div key={game.id} className="m-5 card text-center shadow-sm">
                         <div className='card-header'>
                             {new Date(game.scheduled).toLocaleDateString('en-US', {
                                 weekday: 'short',

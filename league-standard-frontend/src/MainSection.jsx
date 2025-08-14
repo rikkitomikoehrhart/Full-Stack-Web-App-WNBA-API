@@ -1,4 +1,6 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TeamsList from './components/Teams/TeamsList';
+import GamesList from './components/Games/GamesList';
 
 function MainSection() {
     
@@ -12,7 +14,14 @@ function MainSection() {
                     </div>
 
                     <div className="mt-4 col-md-8 col-12">
-                        <TeamsList />
+                        <BrowserRouter>
+                            <div id="routerTarget">
+                                <Routes>
+                                    <Route path="/teams" element={<TeamsList />} />
+                                    <Route path="/games" element={<GamesList />} />
+                                </Routes>
+                            </div>
+                        </BrowserRouter>
                     </div>
                 </div>
             </div>
