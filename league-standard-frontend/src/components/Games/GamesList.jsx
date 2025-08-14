@@ -55,11 +55,24 @@ function GamesList() {
                                         {game.homeTeam.market} {game.homeTeam.name}
                                     </div>
                                     <div className='col'>
-                                    <h3>vs.</h3>
+                                    
                                     </div>
                                     <div className='col'>
                                         {game.awayTeam.market} {game.awayTeam.name}
                                     </div>
+                                </div>
+
+                                <div className='row'>
+                                    <div className='col'>
+                                        <img className="game-logo-team" src={`./team-logos/${(game.homeTeam.name).toLowerCase()}.svg`} alt={`${game.homeTeam.market} ${game.homeTeam.name} Logo`} />
+                                    </div>
+                                    <div className='col'>
+                                    <h3>vs.</h3>
+                                    </div>
+                                    <div className='col'>
+                                        <img className="game-logo-team" src={`./team-logos/${(game.awayTeam.name).toLowerCase()}.svg`} alt={`${game.awayTeam.market} ${game.awayTeam.name} Logo`} />
+                                    </div>
+
                                 </div>
 
                                 <div className='row'>
