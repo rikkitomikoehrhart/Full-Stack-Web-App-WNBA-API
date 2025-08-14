@@ -26,4 +26,8 @@ public class UserFavoriteTeams {
     public void setTeam(Team team) {
         this.team = team;
     }
+
+    public String getTeamID() {
+        return team.getId();
+    }
 }
