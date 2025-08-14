@@ -2,7 +2,6 @@
 .navbar-container {
     position: relative;
     width: 100%;
-    overflow: hidden;
 }
 
 /* Hero Image */
@@ -97,7 +96,7 @@
     background-color: rgba(255, 255, 255, 0.95);
     color: black;
     padding: 8px 15px;
-    margin: 10px auto 0;
+    margin: 20px auto 0;
     font-size: 0.9rem;
     font-style: italic;
     max-width: 150px;
@@ -106,6 +105,7 @@
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin-left: -20px;
+    text-align: center;
 }
 
 /* Social Media Icons - Desktop */
@@ -154,8 +154,6 @@
     margin: 0;
     background-color: rgba(255, 255, 255, 0.95);
     padding: 15px 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .nav-link {
@@ -275,9 +273,11 @@
     .tagline {
         margin-left: auto;
         margin-right: -30px;
+        margin-top: 30px;
         max-width: 180px;
         font-size: 1rem;
         transform: rotate(35deg);
+        text-align: center;
     }
 }
 
