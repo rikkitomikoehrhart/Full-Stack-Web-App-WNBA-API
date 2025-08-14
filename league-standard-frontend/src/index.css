@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap');
 
 html, h6, p, a {
     font-family: "Montserrat", sans-serif;
@@ -11,4 +12,8 @@ h1, h2, h3, h4, h5 {
 
 .loading-text {
     color: #095f37
+}
+
+.tagline {
+    font-family: "Liu Jian Mao Cao", cursive;
 }
