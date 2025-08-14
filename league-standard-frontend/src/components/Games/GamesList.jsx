@@ -36,7 +36,6 @@ function GamesList() {
     return (
         <>
             <div>
-                <h1>Games</h1>
                 <button type="button" className='m-2 btn btn-outline-success' onClick={showAllGames}>All Games</button>
                 <button type="button" className='m-2 btn btn-outline-success' onClick={showUpcomingGames}>Upcoming Games</button>
                 {games.map(game => (

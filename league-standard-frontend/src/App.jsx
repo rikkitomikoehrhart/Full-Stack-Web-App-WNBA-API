@@ -1,5 +1,6 @@
 import NavBar from "./components/UI/NavBar";
-import GamesList from './components/Games/GamesList';
+import MainSection from "./MainSection";
+
 
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
   return (
     <>
       <NavBar />
-
+      <div className="mt-4"></div>
+      <MainSection />
     </>
   );
 
