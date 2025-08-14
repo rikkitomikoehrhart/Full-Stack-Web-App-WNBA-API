@@ -2,6 +2,8 @@ import { useFavorites } from '../UI/UserMenu/FavoritesContext';
 import { useState, useEffect } from 'react';
 import Loading from '../UI/Loading';
 
+
+
 function TeamsList() {
     const [teams, setTeams] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -53,6 +55,7 @@ function TeamsList() {
                                 
                                 <div className='card-body d-flex flex-column'>
                                     <p className='card-text text-muted small'>{team.market}</p> 
+                                    <img className="logo-team" src={`./team-logos/${(team.name).toLowerCase()}.svg`} alt={`${team.market} ${team.name} Logo`} />
                                     <p className='card-text'>{team.name}</p>
                                 </div>
                             </div>

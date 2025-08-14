@@ -14,6 +14,7 @@ function FavoritesMenu() {
                         <ul className="list-group list-group-flush">
                             {favoriteTeams.map(favorite => (
                                 <li key={favorite.team.id} className='list-group-item text-muted'>
+                                <img className="logo-favorite" src={`./team-logos/${(favorite.team.name).toLowerCase()}.svg`} alt={`${favorite.team.market} ${favorite.team.name} Logo`} />
                                     {(favorite.team.market).toUpperCase()} {(favorite.team.name).toUpperCase()}
                                 </li>
                             ))}

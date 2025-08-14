@@ -11,7 +11,7 @@ function MainSection() {
         <>
             <div className="container text-center">
                 <div className="row">
-                    <div className="mt-5 col-4 d-one d-md-block">
+                    <div className="mt-5 col-4 d-none d-md-block">
                         <FavoritesMenu />
                         <BookmarksMenu />
                     </div>

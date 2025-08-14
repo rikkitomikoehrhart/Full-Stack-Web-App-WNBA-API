@@ -17,3 +17,14 @@ h1, h2, h3, h4, h5 {
 .tagline {
     font-family: "Liu Jian Mao Cao", cursive;
 }
+
+.logo-team {
+    margin: auto;
+    height: auto;
+    width: 100px;
+}
+
+.logo-favorite {
+    height: auto;
+    width: 50px;
+}
