@@ -1,6 +1,8 @@
-
+import { useFavorites } from './FavoritesContext';
 
 function FavoritesMenu() {
+    const { favoriteTeams } = useFavorites();
+
     return (
         <>
             <div className="card text-center shadow-sm">
@@ -8,11 +10,17 @@ function FavoritesMenu() {
                     <h4 className="mt-4">Favorites</h4>
                 </div>
                 <div className="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li className="list-group-item">SEATTLE STORM</li>
-                        <li className="list-group-item">A'JA WILSON</li>
-                        <li className="list-group-item">LI YUERU</li>
-                    </ul>
+                    {favoriteTeams.length > 0 ? (
+                        <ul className="list-group list-group-flush">
+                            {favoriteTeams.map(favorite => (
+                                <li key={favorite.team.id} className='list-group-item'>
+                                    {favorite.team.market} {favorite.team.name}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="text-muted">No favorite teams yet</p>
+                    )}
                 </div>
             </div>
         </>

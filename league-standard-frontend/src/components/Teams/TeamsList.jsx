@@ -1,3 +1,4 @@
+import { useFavorites } from '../UI/UserMenu/FavoritesContext';
 import { useState, useEffect } from 'react';
 import Loading from '../UI/Loading';
 
@@ -7,30 +8,16 @@ function TeamsList() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchTeams = fetch("http://localhost:8080/api/teams")
-                            .then(res => res.json());
-
-        const fetchFavoriteTeams = fetch("http://localhost:8080/api/favorites/teams")
-                                    .then(res => res.json())
-                                    .then(favorites => {
-                                        const favoriteIDs = new Set(favorites.map(fav => fav.team.id));
-                                        setFavoriteTeams(favoriteIDs);
-                                        return favoriteIDs;
-                                    })
-                                    .catch(err => {
-                                        console.error("Error fetching favorites: ", err);
-                                        return new Set();
-                                    });
-        
-        Promise.all([fetchTeams, fetchFavoriteTeams])
-                .then(([teamsData, favoritesSet]) => {
-                    setTeams(teamsData);
-                    setIsLoading(false);
-                })
-                .catch(err => {
-                    console.error("Error: ", err);
-                    setIsLoading(false);
-                });
+        fetch("http://localhost:8080/api/teams")
+            .then(res => res.json())
+            .then(data => {
+                setTeams(data);
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.error("Error: ", err);
+                setIsLoading(false);
+            });
     }, []);
 
     const toggleFavorite = async (teamID) => {
