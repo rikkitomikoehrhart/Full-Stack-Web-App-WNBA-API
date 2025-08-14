@@ -23,7 +23,17 @@ function TeamsList() {
 
     return (
         <>
+            <div>
+                <h1>Teams</h1>
+                <ul className="list-group list-group-flush">
+                    {teams.map(team => (
+                        <li key={team.id} className='list-group-item'>
+                            <p>{team.market} {team.name}</p>
+                        </li>
+                    ))}
+                </ul>
 
+            </div>
         </>
     );
 }

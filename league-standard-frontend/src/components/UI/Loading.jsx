@@ -1,11 +1,11 @@
 function Loading() {
     return (
         <>
-            <div class="mt-3 container text-center">
-                <div class="spinner-border text-success" role="status">
-                    <span class="visually-hidden">Loading...</span>
+            <div className="mt-3 container text-center">
+                <div className="spinner-border text-success" role="status">
+                    <span className="visually-hidden">Loading...</span>
                 </div>
-                <h6 class="mt-2 loading-text">Loading...</h6>
+                <h6 className="mt-2 loading-text">Loading...</h6>
             </div>
         </>
     );
