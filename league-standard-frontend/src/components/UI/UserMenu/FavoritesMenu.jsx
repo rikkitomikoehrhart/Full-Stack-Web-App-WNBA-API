@@ -13,8 +13,8 @@ function FavoritesMenu() {
                     {favoriteTeams.length > 0 ? (
                         <ul className="list-group list-group-flush">
                             {favoriteTeams.map(favorite => (
-                                <li key={favorite.team.id} className='list-group-item'>
-                                    {favorite.team.market} {favorite.team.name}
+                                <li key={favorite.team.id} className='list-group-item text-muted'>
+                                    {(favorite.team.market).toUpperCase()} {(favorite.team.name).toUpperCase()}
                                 </li>
                             ))}
                         </ul>
