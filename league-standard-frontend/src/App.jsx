@@ -1,11 +1,11 @@
-import GamesList from "./components/Games/GamesList";
 
+import NavBar from "./components/UI/NavBar";
 
 function App() {
 
   return (
     <>
-      <GamesList />
+      <NavBar />
     </>
   );
 
