@@ -64,11 +64,11 @@ function GamesList() {
 
                                 <div className='row'>
                                     <div className='col'>
-                                        <h3>{game.homeScore}</h3>
+                                        <h3>{game.homeScore == 0 ? "--" : game.homeScore}</h3>
                                     </div>
                                     <div className="col"> </div>
                                     <div className='col'> 
-                                        <h3>{game.awayScore}</h3>
+                                        <h3>{game.awayScore == 0 ? "--" : game.awayScore}</h3>
                                     </div>
                                 </div>
                             </div>
