@@ -34,7 +34,7 @@ public class PlayerRowMapper {
             player.setExperience(rs.getInt("experience"));
             player.setCollege(rs.getString("college"));
             player.setBirth_place(rs.getString("birth_place"));
-            player.setBirthdate(rs.getDate("birth_date").toLocalDate());
+            player.setBirthdate(rs.getDate("birthdate").toLocalDate());
             player.setRookie_year(rs.getInt("rookie_year"));
             player.setDraft_round(rs.getInt("draft_round"));
             player.setDraft_pick(rs.getInt("draft_pick"));
