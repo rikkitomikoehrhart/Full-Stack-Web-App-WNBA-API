@@ -4,10 +4,7 @@ import com.rikkitomikoehrhart.league_standard.data.CoachRepo;
 import com.rikkitomikoehrhart.league_standard.data.GameRepo;
 import com.rikkitomikoehrhart.league_standard.data.TeamColorsRepo;
 import com.rikkitomikoehrhart.league_standard.model.Game;
-import com.rikkitomikoehrhart.league_standard.service.APIService;
-import com.rikkitomikoehrhart.league_standard.service.GameDataService;
-import com.rikkitomikoehrhart.league_standard.service.StandingsDataService;
-import com.rikkitomikoehrhart.league_standard.service.TeamProfileService;
+import com.rikkitomikoehrhart.league_standard.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -35,6 +32,9 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
     @Autowired
     private StandingsDataService standingsDataService;
 
+    @Autowired
+    private PlayerService playerService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(TheLeagueStandardApplication.class, args);
 	}
@@ -49,5 +49,8 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
 
         // UPDATE STANDINGS
         // standingsDataService.fetchStandings(2025, "REG");
+
+        // ADD PLAYERS
+        // playerService.fetchAllPlayers();
 	}
 }
