@@ -10,4 +10,7 @@ public interface TeamColorsRepo {
     public TeamColors addTeamColors(TeamColors teamColors);
     public void updateTeamColors(TeamColors teamColors);
     public void deleteTeamColors(String id);
+
+    interface StandingsRepo {
+    }
 }

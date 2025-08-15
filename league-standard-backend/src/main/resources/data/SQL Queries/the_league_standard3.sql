@@ -1,0 +1,17 @@
+CREATE TABLE standings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    team_id VARCHAR(100) NOT NULL,
+    wins INT NOT NULL DEFAULT 0,
+    losses INT NOT NULL DEFAULT 0,
+    win_pct DECIMAL(5,3) NOT NULL DEFAULT 0.000,
+	points_for DECIMAL(5, 3) NOT NULL DEFAULT 0.000,
+    points_against DECIMAL(5, 3) NOT NULL DEFAULT 0.000,
+    point_diff DECIMAL(5,3) NOT NULL DEFAULT 0.000,
+    league_rank INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE,
+    
+    UNIQUE KEY unique_team_standing (team_id)
+);

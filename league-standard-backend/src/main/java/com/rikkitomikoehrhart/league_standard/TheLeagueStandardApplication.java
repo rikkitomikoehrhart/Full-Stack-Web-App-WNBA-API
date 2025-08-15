@@ -28,6 +28,9 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
 	@Autowired
 	private TeamColorsRepo teamColorsRepo;
 
+    @Autowired
+    private GameDataService gameDataService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(TheLeagueStandardApplication.class, args);
 	}
@@ -36,5 +39,8 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
 	public void run(String... args) throws InterruptedException {
 		System.out.println("System Running...");
 
+
+        // UPDATE GAMES
+        // gameDataService.loadGamesFromAPI(2025);
 	}
 }
