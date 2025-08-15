@@ -99,4 +99,8 @@ public class TeamStanding {
     public String getTeamID() {
         return team.getId();
     }
+
+    public void setTeamID(String id) {
+        team.setId(id);
+    }
 }
