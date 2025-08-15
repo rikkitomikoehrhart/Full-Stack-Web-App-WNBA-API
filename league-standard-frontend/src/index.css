@@ -50,6 +50,14 @@ td {
     text-align: center;
 }
 
+.player-name-card {
+    font-size: 1rem;
+}
+
+.player-num-team {
+    font-size: .75rem;
+}
+
 .table-heading {
     font-size: .75rem;
     display: table-cell;

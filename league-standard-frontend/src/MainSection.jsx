@@ -4,6 +4,7 @@ import GamesList from './components/Games/GamesList';
 import FavoritesMenu from './components/UI/UserMenu/FavoritesMenu';
 import BookmarksMenu from './components/UI/UserMenu/BookmarksMenu';
 import Standings from './components/Standings/Standings';
+import PlayersList from './components/Players/PlayersList';
 
 function MainSection() {
     
@@ -25,6 +26,7 @@ function MainSection() {
                                     <Route path="/standings" element={<Standings />} />
                                     <Route path="/games" element={<GamesList />} />
                                     <Route path="/teams" element={<TeamsList />} />
+                                    <Route path="/players" element={<PlayersList />} />
                                 </Routes>
                             </div>
                         </BrowserRouter>
