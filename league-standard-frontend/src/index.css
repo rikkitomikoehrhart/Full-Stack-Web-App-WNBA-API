@@ -34,6 +34,35 @@ h1, h2, h3, h4, h5 {
     width: 50px;
 }
 
+.standing-logo-team {
+    height: auto;
+    width: 30px;
+}
+
+
+table {
+    font-size: .8rem;
+}
+
+td {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table-heading {
+    font-size: .75rem;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table-heading.team-heading {
+    font-size: 1.1rem;
+}
+
+
+
 @media (min-width: 756px) {
     .game-logo-team {
         width: 100px;

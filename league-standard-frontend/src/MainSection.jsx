@@ -3,6 +3,7 @@ import TeamsList from './components/Teams/TeamsList';
 import GamesList from './components/Games/GamesList';
 import FavoritesMenu from './components/UI/UserMenu/FavoritesMenu';
 import BookmarksMenu from './components/UI/UserMenu/BookmarksMenu';
+import Standings from './components/Standings/Standings';
 
 function MainSection() {
     
@@ -20,7 +21,8 @@ function MainSection() {
                         <BrowserRouter>
                             <div id="routerTarget">
                                 <Routes>
-                                    <Route path="/" element={<GamesList />} />
+                                    <Route path="/" element={<Standings />} />
+                                    <Route path="/standings" element={<Standings />} />
                                     <Route path="/games" element={<GamesList />} />
                                     <Route path="/teams" element={<TeamsList />} />
                                 </Routes>

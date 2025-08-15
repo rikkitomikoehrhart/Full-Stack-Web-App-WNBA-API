@@ -4,7 +4,7 @@ public class TeamStanding {
     private String id;
     private Team team;
     private int wins;
-    private int loses;
+    private int losses;
     private float win_pct;
     private float points_for;
     private float points_against;
@@ -12,11 +12,11 @@ public class TeamStanding {
     private int league_rank;
 
     public TeamStanding() {};
-    public TeamStanding(String id, Team team, int wins, int loses, float win_pct, float points_for, float points_against, float point_diff, int league_rank) {
+    public TeamStanding(String id, Team team, int wins, int losses, float win_pct, float points_for, float points_against, float point_diff, int league_rank) {
         this.id = id;
         this.team = team;
         this.wins = wins;
-        this.loses = loses;
+        this.losses = losses;
         this.win_pct = win_pct;
         this.points_for = points_for;
         this.points_against = points_against;
@@ -48,12 +48,12 @@ public class TeamStanding {
         this.wins = wins;
     }
 
-    public int getLoses() {
-        return loses;
+    public int getLosses() {
+        return losses;
     }
 
-    public void setLoses(int loses) {
-        this.loses = loses;
+    public void setLosses(int losses) {
+        this.losses = losses;
     }
 
     public float getWin_pct() {

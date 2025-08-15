@@ -23,7 +23,7 @@ public class StandingsRowMapper {
 
             standing.setTeam(team);
             standing.setWins(rs.getInt("wins"));
-            standing.setLoses(rs.getInt("losses"));
+            standing.setLosses(rs.getInt("losses"));
             standing.setWin_pct(rs.getFloat("win_pct"));
             standing.setPoints_for(rs.getFloat("points_for"));
             standing.setPoints_against(rs.getFloat("points_against"));

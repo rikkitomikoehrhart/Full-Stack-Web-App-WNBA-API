@@ -14,8 +14,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class StandingsDataService {
@@ -75,7 +73,7 @@ public class StandingsDataService {
                     team.setId(teamNode.get("id").asText());
                     standing.setTeam(team);
                     standing.setWins(teamNode.get("wins").asInt());
-                    standing.setLoses(teamNode.get("losses").asInt());
+                    standing.setLosses(teamNode.get("losses").asInt());
                     standing.setWin_pct((float) teamNode.get("win_pct").asDouble());
                     standing.setPoints_for((float) teamNode.get("points_for").asDouble());
                     standing.setPoints_against((float) teamNode.get("points_against").asDouble());
