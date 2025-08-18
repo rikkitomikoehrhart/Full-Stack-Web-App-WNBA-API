@@ -51,6 +51,8 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
         // standingsDataService.fetchStandings(2025, "REG");
 
         // ADD PLAYERS
-        // playerService.fetchAllPlayers();
+        //playerService.fetchAllPlayers();
+
+
 	}
 }

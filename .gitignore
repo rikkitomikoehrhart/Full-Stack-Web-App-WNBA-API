@@ -60,3 +60,7 @@ env.properties
 Thumbs.db
 *.tmp
 *~
+
+
+# OTHER
+league-standard-frontend/public/player-headshots/
