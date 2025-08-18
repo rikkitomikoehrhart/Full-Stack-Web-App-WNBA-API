@@ -1,4 +1,5 @@
-import { useFavorites } from '../UI/UserMenu/FavoritesContext';
+import { useFavorites } from '../Context/FavoritesContext.jsx';
+import { useTeamColors } from '../Context/TeamColorsContext.jsx';
 import { useState, useEffect } from 'react';
 import Loading from '../UI/Loading';
 import { generatePlayerHeadshotPath } from "../Utilities/playerUtils.jsx";
@@ -8,6 +9,7 @@ function PlayersList() {
     const [isLoading, setIsLoading] = useState(true);
 
     const { favoritePlayerIDs, togglePlayerFavorite } = useFavorites();
+    const { teamColors } = useTeamColors();
 
     useEffect(() => {
         fetch("http://localhost:8080/api/players")
@@ -41,6 +43,7 @@ function PlayersList() {
         <>
             <div className='container text-center'>
                 <div className='row g-3'>
+                {console.log(teamColors)}
                     {players.map((player, index) => {
                         const showLetterHeader = index === 0 || 
                             (player.last_name.charAt(0) !== players[index - 1].last_name.charAt(0));
@@ -56,10 +59,10 @@ function PlayersList() {
                                 <div className='col-lg-4 col-md-6 col-sm-12'>
                                     <div className='card shadow-sm h-100'>
 
-                                        <div className='mt-auto mb-3 pt-2'>
+                                        <div className='mt-auto'>
                                             <button className='btn btn-link p-0 border-0 position-absolute' onClick={() => togglePlayerFavorite(player.id)} style={{ background: 'none', top: '10px', left: '10px', zIndex: 1 }}>
                                                 {favoritePlayerIDs.has(player.id) ? (
-                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ff6b35" stroke="#dd4f1cff" strokeWidth="2" >
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ff6b35" stroke="#000000ff" strokeWidth="2" >
                                                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                                                         </svg>
                                                     ) : (
@@ -70,8 +73,10 @@ function PlayersList() {
                                             </button>
                                         </div>
 
-
-                                        <img src={generatePlayerHeadshotPath(player)} className='card-img-top' alt={`${player.first_name} ${player.last_name}`}/>
+                                        <div style={{ backgroundColor: (teamColors.find((color) => color.teamID == player.team.id && color.colorType == "primary")?.hexCode || "#ccc"), borderRadius: "5px"}}>
+                                            <img src={generatePlayerHeadshotPath(player)} className='card-img-top pt-4' alt={`${player.first_name} ${player.last_name}`}/>
+                                        </div>
+                                        
                                         <div className='card-body'>
                                             <h5 className='card-title player-name-card'>{player.first_name} {player.last_name}</h5>
                                             <p className='card-text text-muted player-num-team'>#{player.jersey_number} on the {player.team.market} {player.team.name}</p>

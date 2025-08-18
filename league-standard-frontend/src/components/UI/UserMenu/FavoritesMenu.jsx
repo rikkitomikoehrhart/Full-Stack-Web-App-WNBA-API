@@ -1,4 +1,4 @@
-import { useFavorites } from './FavoritesContext';
+import { useFavorites } from '../../Context/FavoritesContext';
 import { generatePlayerHeadshotPath } from '../../Utilities/playerUtils';
 
 function FavoritesMenu() {

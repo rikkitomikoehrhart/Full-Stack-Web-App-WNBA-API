@@ -1,15 +1,18 @@
 import NavBar from "./components/UI/NavBar";
 import MainSection from "./MainSection";
-import { FavoritesProvider } from "./components/UI/UserMenu/FavoritesContext";
+import { FavoritesProvider } from "./components/Context/FavoritesContext";
+import { TeamColorsProvider } from "./components/Context/TeamColorsContext";
 
 
 function App() {
 
   return (
     <FavoritesProvider>
-      <NavBar />
-      <div className="mt-4"></div>
-      <MainSection />
+      <TeamColorsProvider>
+        <NavBar />
+        <div className="mt-4"></div>
+        <MainSection />
+      </TeamColorsProvider>
     </FavoritesProvider>
   );
 
