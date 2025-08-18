@@ -26,6 +26,24 @@ function PlayersList() {
     }, []);
 
 
+    function generatePlayerHeadshotPath(player) {
+        const sanitizeName = (name) => {
+            return name
+                .toLowerCase()
+                .normalize("NFD") // normalize accented characters
+                .replace(/[\u0300-\u036f]/g, "") // remove diacritics
+                .replace(/[^a-z0-9]/g, ""); // remove non-alphanumeric
+        };
+
+        const first_name = sanitizeName(player.first_name);
+        const last_name = sanitizeName(player.last_name);
+
+        const path = "/public/player-headshots/";
+
+        return path + first_name + "_" + last_name + ".png";
+    }
+
+
     if (isLoading) {
         return (
             <Loading />
@@ -49,7 +67,7 @@ function PlayersList() {
                                     </div>
                                 )}
                                 <div className='col-lg-4 col-md-6 col-sm-12'>
-                                    <div className='card'>
+                                    <div className='card shadow-sm h-100'>
 
                                     
                                         <div className='mt-auto mb-3 pt-2'>
@@ -61,7 +79,7 @@ function PlayersList() {
                                         </div>
 
 
-                                        <img src="" className='card-img-top' alt={`${player.first_name} ${player.last_name}`}/>
+                                        <img src={generatePlayerHeadshotPath(player)} className='card-img-top' alt={`${player.first_name} ${player.last_name}`}/>
                                         <div className='card-body'>
                                             <h5 className='card-title player-name-card'>{player.first_name} {player.last_name}</h5>
                                             <p className='card-text text-muted player-num-team'>#{player.jersey_number} on the {player.team.market} {player.team.name}</p>
