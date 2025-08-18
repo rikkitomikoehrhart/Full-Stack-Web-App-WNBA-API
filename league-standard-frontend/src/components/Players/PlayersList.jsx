@@ -1,9 +1,13 @@
+import { useFavorites } from '../UI/UserMenu/FavoritesContext';
 import { useState, useEffect } from 'react';
 import Loading from '../UI/Loading';
+import { generatePlayerHeadshotPath } from "../Utilities/playerUtils.jsx";
 
 function PlayersList() {
     const [players, setPlayers] = useState([])
     const [isLoading, setIsLoading] = useState(true);
+
+    const { favoritePlayerIDs, togglePlayerFavorite } = useFavorites();
 
     useEffect(() => {
         fetch("http://localhost:8080/api/players")
@@ -25,23 +29,6 @@ function PlayersList() {
             });
     }, []);
 
-
-    function generatePlayerHeadshotPath(player) {
-        const sanitizeName = (name) => {
-            return name
-                .toLowerCase()
-                .normalize("NFD") // normalize accented characters
-                .replace(/[\u0300-\u036f]/g, "") // remove diacritics
-                .replace(/[^a-z0-9]/g, ""); // remove non-alphanumeric
-        };
-
-        const first_name = sanitizeName(player.first_name);
-        const last_name = sanitizeName(player.last_name);
-
-        const path = "/public/player-headshots/";
-
-        return path + first_name + "_" + last_name + ".png";
-    }
 
 
     if (isLoading) {
@@ -69,12 +56,17 @@ function PlayersList() {
                                 <div className='col-lg-4 col-md-6 col-sm-12'>
                                     <div className='card shadow-sm h-100'>
 
-                                    
                                         <div className='mt-auto mb-3 pt-2'>
-                                            <button className='btn btn-link p-0 border-0 position-absolute' style={{ background: 'none', top: '10px', left: '10px', zIndex: 1 }}>
-                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
-                                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                                                </svg>
+                                            <button className='btn btn-link p-0 border-0 position-absolute' onClick={() => togglePlayerFavorite(player.id)} style={{ background: 'none', top: '10px', left: '10px', zIndex: 1 }}>
+                                                {favoritePlayerIDs.has(player.id) ? (
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ff6b35" stroke="#dd4f1cff" strokeWidth="2" >
+                                                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                        </svg>
+                                                    ) : (
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
+                                                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                        </svg>
+                                                    )}
                                             </button>
                                         </div>
 

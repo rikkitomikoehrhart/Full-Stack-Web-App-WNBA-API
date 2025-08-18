@@ -1,7 +1,8 @@
 import { useFavorites } from './FavoritesContext';
+import { generatePlayerHeadshotPath } from '../../Utilities/playerUtils';
 
 function FavoritesMenu() {
-    const { favoriteTeams } = useFavorites();
+    const { favoriteTeams, favoritePlayers } = useFavorites();
 
     return (
         <>
@@ -21,6 +22,19 @@ function FavoritesMenu() {
                         </ul>
                     ) : (
                         <p className="text-muted">No favorite teams yet</p>
+                    )}
+
+                    {favoritePlayers.length > 0 ? (
+                        <ul className="list-group list-group-flush">
+                            {favoritePlayers.map(favorite => (
+                                <li key={favorite.player.id} className='list-group-item text-muted'>
+                                <img className="logo-favorite" src={generatePlayerHeadshotPath(favorite.player)} alt={`${favorite.player.first_name} ${favorite.player.last_name}`} />
+                                    {(favorite.player.first_name).toUpperCase()} {(favorite.player.last_name).toUpperCase()}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="text-muted">No favorite players yet</p>
                     )}
                 </div>
             </div>
