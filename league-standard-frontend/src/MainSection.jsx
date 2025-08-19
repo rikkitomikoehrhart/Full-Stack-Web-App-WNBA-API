@@ -6,6 +6,7 @@ import BookmarksMenu from './components/UI/UserMenu/BookmarksMenu';
 import Standings from './components/Standings/Standings';
 import PlayersList from './components/Players/PlayersList';
 import PlayerDetail from './components/Players/PlayerDetail';
+import TeamDetail from './components/Teams/TeamDetail';
 
 function MainSection() {
     
@@ -27,7 +28,7 @@ function MainSection() {
                                     <Route path="/standings" element={<Standings />} />
                                     <Route path="/games" element={<GamesList />} />
                                     <Route path="/teams" element={<TeamsList />} />
-                                    {/* <Route path="/teams/:id" element={} /> */}
+                                    <Route path="/teams/:id" element={<TeamDetail />} />
                                     <Route path="/players" element={<PlayersList />} />
                                     <Route path="/players/:id" element={<PlayerDetail />}/>
                                 </Routes>

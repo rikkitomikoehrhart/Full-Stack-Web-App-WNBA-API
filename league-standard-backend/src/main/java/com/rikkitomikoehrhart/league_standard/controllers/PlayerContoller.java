@@ -24,4 +24,9 @@ public class PlayerContoller {
     public Player getPlayerByID(@PathVariable String playerID) {
         return playerRepo.getPlayerByID(playerID);
     }
+
+    @GetMapping("/team/{teamID}")
+    public List<Player> getPlayersByTeam(@PathVariable String teamID) {
+        return playerRepo.getPlayersByTeam(teamID);
+    }
 }
