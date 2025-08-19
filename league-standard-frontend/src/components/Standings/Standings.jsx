@@ -48,8 +48,8 @@ useEffect(() => {
                         {teamStanding.map(standing => (
                             <tr key={standing.id}>
                                 <td>{standing.league_rank}</td>
-                                <td><img className="standing-logo-team" src={`./team-logos/${(standing.team.name).toLowerCase()}.svg`} alt={`${standing.team.market} ${standing.team.name} Logo`} /></td>
-                                <td>{standing.team.market} {standing.team.name}</td>
+                                <td><a href={`/teams/${standing.team.id}`}><img className="standing-logo-team" src={`./team-logos/${(standing.team.name).toLowerCase()}.svg`} alt={`${standing.team.market} ${standing.team.name} Logo`} /></a></td>
+                                <td><a href={`/teams/${standing.team.id}`}>{standing.team.market} {standing.team.name}</a></td>
                                 <td>{standing.wins}</td>
                                 <td>{standing.losses}</td>
                                 <td>{((standing.win_pct) * 100).toFixed(1)} %</td>

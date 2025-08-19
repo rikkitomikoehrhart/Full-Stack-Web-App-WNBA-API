@@ -48,15 +48,15 @@ function PlayerDetail() {
     return (
         <>
             <h2>{player.first_name} {player.last_name}</h2>
-            <p className="text-muted">#{player.jersey_number} on the {player.team.market} {player.team.name}, [ {player.position} ]</p>
+            <p className="text-muted">#{player.jersey_number} on the <a href={`/teams/${player.team.id}`}>{player.team.market} {player.team.name}</a>, Position: {player.position}</p>
 
             <div className="container mt-4">
                 <div className="row">
                     <div className="col-md-6 col-sm-12">
                         <div style={{ overflow: "hidden",
                             backgroundImage: `linear-gradient(0deg, ${(teamColors.find((color) => color.teamID == player.team.id && color.colorType == "primary")?.hexCode || "#ccc")} 15%, #ffffff 25%`}} 
-                            className="">
-                            <img src={generatePlayerHeadshotPath(player)} className='player-detail-picture mt-5 pr-4 pl-4 shadow-sm' alt={`${player.first_name} ${player.last_name}`}/>
+                            className="shadow-sm">
+                            <img src={generatePlayerHeadshotPath(player)} className='player-detail-picture mt-5 pr-4 pl-4' alt={`${player.first_name} ${player.last_name}`}/>
                         </div>
                     </div>
                     <div className="col-md-6 col-sm-12">

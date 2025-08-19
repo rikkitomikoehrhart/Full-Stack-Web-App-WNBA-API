@@ -82,6 +82,13 @@ td {
     object-position: center top;
 }
 
+.large-logo {
+    height: 100%;
+    width: 100%;
+    transform: scale(1.1);
+    object-fit: cover;
+}
+
 .stats-table th {
     padding-top: 20px;
 }

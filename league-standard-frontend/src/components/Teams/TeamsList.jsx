@@ -54,9 +54,12 @@ function TeamsList() {
                                 
                                 
                                 <div className='card-body d-flex flex-column'>
-                                    <p className='card-text text-muted small'>{team.market}</p> 
-                                    <img className="logo-team" src={`./team-logos/${(team.name).toLowerCase()}.svg`} alt={`${team.market} ${team.name} Logo`} />
-                                    <p className='card-text'>{team.name}</p>
+                                    <a href={`/teams/${team.id}`}>
+                                        <p className='card-text text-muted small'>{team.market}</p> 
+                                        <img className="logo-team" src={`./team-logos/${(team.name).toLowerCase()}.svg`} alt={`${team.market} ${team.name} Logo`} />
+                                        <p className='card-text'>{team.name}</p>
+                                    </a>
+                                    
                                 </div>
                             </div>
                         </div>

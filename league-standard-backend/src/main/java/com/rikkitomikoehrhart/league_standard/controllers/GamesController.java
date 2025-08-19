@@ -24,4 +24,7 @@ public class GamesController {
     public Game getGameByID(@PathVariable String gameID) {
         return gameRepo.getGameByID(gameID);
     }
+
+    @GetMapping("/next/{teamID}")
+    public Game getNextGameByTeamID(@PathVariable String teamID) { return gameRepo.getNextGameByTeamID(teamID); }
 }

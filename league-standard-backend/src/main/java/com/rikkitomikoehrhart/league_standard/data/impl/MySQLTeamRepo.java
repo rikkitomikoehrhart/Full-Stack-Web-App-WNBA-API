@@ -32,6 +32,7 @@ public class MySQLTeamRepo implements TeamRepo {
         }
     }
 
+
     @Override
     public List<Team> getAllTeams() {
         String sql = """

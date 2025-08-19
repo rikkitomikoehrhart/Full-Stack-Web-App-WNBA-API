@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface GameRepo {
     public Game getGameByID(String id);
+    public Game getNextGameByTeamID(String id);
     public List<Game> getAllGames();
     public Game addGame(Game game);
     public void updateGame(Game game);
