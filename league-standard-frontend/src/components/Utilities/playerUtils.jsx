@@ -10,7 +10,7 @@ export function generatePlayerHeadshotPath(player) {
     const first_name = sanitizeName(player.first_name);
     const last_name = sanitizeName(player.last_name);
 
-    const path = "/public/player-headshots/";
+    const path = "/player-headshots/";
 
     return path + first_name + "_" + last_name + ".png";
 }

@@ -28,8 +28,11 @@ function FavoritesMenu() {
                         <ul className="list-group list-group-flush">
                             {favoritePlayers.map(favorite => (
                                 <li key={favorite.player.id} className='list-group-item text-muted'>
-                                <img className="logo-favorite" src={generatePlayerHeadshotPath(favorite.player)} alt={`${favorite.player.first_name} ${favorite.player.last_name}`} />
-                                    {(favorite.player.first_name).toUpperCase()} {(favorite.player.last_name).toUpperCase()}
+                                    <a href={`/players/${favorite.player.id}`}>
+                                        <img className="logo-favorite" src={generatePlayerHeadshotPath(favorite.player)} alt={`${favorite.player.first_name} ${favorite.player.last_name}`} />
+                                        {(favorite.player.first_name).toUpperCase()} {(favorite.player.last_name).toUpperCase()}
+                                    </a>
+                                
                                 </li>
                             ))}
                         </ul>
