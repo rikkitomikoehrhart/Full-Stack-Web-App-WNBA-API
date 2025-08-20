@@ -15,16 +15,7 @@ import java.util.List;
 @SpringBootApplication
 public class TheLeagueStandardApplication implements CommandLineRunner {
 	@Autowired
-	private APIService apiService;
-
-	@Autowired
 	private TeamProfileService teamProfileService;
-
-	@Autowired
-	private CoachRepo coachRepo;
-
-	@Autowired
-	private TeamColorsRepo teamColorsRepo;
 
     @Autowired
     private GameDataService gameDataService;
@@ -34,6 +25,9 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
 
     @Autowired
     private PlayerService playerService;
+
+    @Autowired
+    private NewsDataService newsDataService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TheLeagueStandardApplication.class, args);
@@ -51,8 +45,9 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
         // standingsDataService.fetchStandings(2025, "REG");
 
         // ADD PLAYERS
-        //playerService.fetchAllPlayers();
+        // playerService.fetchAllPlayers();
 
-
+        // ADD/UPDATE NEWS
+        newsDataService.loadNewsData();
 	}
 }

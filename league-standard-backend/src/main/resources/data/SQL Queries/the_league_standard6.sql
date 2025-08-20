@@ -1,0 +1,11 @@
+CREATE TABLE news (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    headline VARCHAR(500) NOT NULL,
+    description TEXT,
+    link VARCHAR(1000),
+    image_urls JSON,
+    published DATETIME,
+    categories JSON,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
