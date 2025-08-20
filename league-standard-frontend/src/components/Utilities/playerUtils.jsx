@@ -14,3 +14,22 @@ export function generatePlayerHeadshotPath(player) {
 
     return path + first_name + "_" + last_name + ".png";
 }
+
+export function getFormattedDate(dateString) {
+    const date = new Date(dateString);
+    const month = date.toLocaleDateString('default', { month: "short" });
+
+    return month + " " + date.getDate() + ", " + date.getFullYear();
+}
+
+export function getFormattedDateTime(dateString) {
+    const date = new Date(dateString);
+    const month = date.toLocaleDateString('default', { month: "short" });
+    const time = date.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    });
+
+    return month + " " + date.getDate() + ", " + date.getFullYear() + " at " + time;
+}

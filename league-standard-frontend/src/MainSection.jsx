@@ -8,6 +8,7 @@ import PlayersList from './components/Players/PlayersList';
 import PlayerDetail from './components/Players/PlayerDetail';
 import TeamDetail from './components/Teams/TeamDetail';
 import NewsList from './components/News/NewsList';
+import NewsDetail from './components/News/NewsDetail';
 
 function MainSection() {
     
@@ -26,6 +27,7 @@ function MainSection() {
                             <div id="routerTarget">
                                 <Routes>
                                     <Route path="/" element={<NewsList />} />
+                                    <Route path="/news/:id" element={<NewsDetail />} />
                                     <Route path="/standings" element={<Standings />} />
                                     <Route path="/games" element={<GamesList />} />
                                     <Route path="/teams" element={<TeamsList />} />

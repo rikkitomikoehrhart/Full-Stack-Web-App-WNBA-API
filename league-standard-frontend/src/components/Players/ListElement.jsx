@@ -38,7 +38,7 @@ function ListElement( { players, displayHeaders } ) {
                                         </button>
                                     </div>
 
-                                    <div style={{ backgroundColor: (teamColors.find((color) => color.teamID == player.team.id && color.colorType == "primary")?.hexCode + "ee" || "#ccc"), borderRadius: "5px"}}>
+                                    <div style={{ backgroundColor: (teamColors.find((color) => color.teamID == player.team.id && color.colorType == "primary")?.hexCode + "cc" || "#ccc"), borderRadius: "5px"}}>
                                         <img src={generatePlayerHeadshotPath(player)} className='card-img-top pt-4' alt={`${player.first_name} ${player.last_name}`}/>
                                     </div>
                                     

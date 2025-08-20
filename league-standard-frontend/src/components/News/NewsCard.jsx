@@ -11,7 +11,7 @@ function NewsCard({ article }) {
                     <p className="card-text text-muted">{article.description}</p>
                 </div>
                 <div className="card-footer text-body-secondary text-end">
-                    <p className="card-text">Read More...</p>
+                    <a href={`/news/${article.id}`}><p className="card-text">Read More...</p></a>
                 </div>
             </div>
         </>

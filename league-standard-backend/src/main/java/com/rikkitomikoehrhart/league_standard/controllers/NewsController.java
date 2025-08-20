@@ -3,10 +3,7 @@ package com.rikkitomikoehrhart.league_standard.controllers;
 import com.rikkitomikoehrhart.league_standard.data.NewsRepo;
 import com.rikkitomikoehrhart.league_standard.model.News;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +17,7 @@ public class NewsController {
 
     @GetMapping()
     public List<News> getNewsArticles() { return newsRepo.getAllNews(); }
+
+    @GetMapping("/{id}")
+    public News getNewsByID(@PathVariable String id) { return newsRepo.getNewsByID(id); }
 }

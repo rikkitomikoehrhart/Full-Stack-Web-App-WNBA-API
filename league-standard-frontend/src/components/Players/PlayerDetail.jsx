@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "../UI/Loading";
-import { generatePlayerHeadshotPath } from "../Utilities/playerUtils.jsx";
+import { generatePlayerHeadshotPath, getFormattedDate } from "../Utilities/playerUtils.jsx";
 import { useTeamColors } from '../Context/TeamColorsContext.jsx';
 
 
@@ -90,7 +90,7 @@ function PlayerDetail() {
                                 <th>SIGN</th>
                             </tr>
                             <tr>
-                                <td>{getFormattedBirthday(player.birthdate)}</td>
+                                <td>{getFormattedDate(player.birthdate)}</td>
                                 <td>{getZodiacSign(player.birthdate)}</td>
                             </tr>
 
@@ -109,13 +109,6 @@ function getFormattedHeight(height) {
     const inches = height%12;
 
     return feet + `" ` + inches + `'`;
-}
-
-function getFormattedBirthday(birthdayString) {
-    const birthdate = new Date(birthdayString);
-    const month = birthdate.toLocaleDateString('default', { month: "short" });
-
-    return month + " " + birthdate.getDate() + ", " + birthdate.getFullYear();
 }
 
 function getFormattedAge(birthdateString) {
