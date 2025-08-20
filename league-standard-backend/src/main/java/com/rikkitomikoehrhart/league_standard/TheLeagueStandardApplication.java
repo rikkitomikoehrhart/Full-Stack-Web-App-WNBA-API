@@ -48,6 +48,6 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
         // playerService.fetchAllPlayers();
 
         // ADD/UPDATE NEWS
-        newsDataService.loadNewsData();
+        // newsDataService.loadNewsData();
 	}
 }

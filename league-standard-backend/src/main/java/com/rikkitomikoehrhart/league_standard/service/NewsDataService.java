@@ -65,16 +65,31 @@ public class NewsDataService {
         try {
             JsonNode root = objectMapper.readTree(jsonResponse);
 
+            if (root.isArray()) {
+                for (JsonNode articleNode : root) {
+                    processSingleNews(articleNode);
+                }
+            } else {
+                System.err.println("Expected array but got: " + root.getNodeType());
+            }
+        } catch (Exception e) {
+            System.err.println("Error processing news array: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void processSingleNews(JsonNode articleNode) {
+         try {
             News news = new News();
 
-            JsonNode descriptionNode = root.get("description");
+            JsonNode descriptionNode = articleNode.get("description");
             news.setDescription(descriptionNode != null ? descriptionNode.asText() : "");
 
-            JsonNode headlineNode = root.get("headline");
+            JsonNode headlineNode = articleNode.get("headline");
             news.setHeadline(headlineNode != null ? headlineNode.asText() : "");
 
 
-            JsonNode imagesNode = root.get("images");
+            JsonNode imagesNode = articleNode.get("images");
             List<String> imagesArray = new ArrayList<>();
 
             if (imagesNode != null && imagesNode.isArray()) {
@@ -85,21 +100,27 @@ public class NewsDataService {
 
             news.setImage_urls(imagesArray);
 
-            JsonNode linkNode = root.get("link");
+            JsonNode linkNode = articleNode.get("link");
             news.setLink(linkNode != null ? linkNode.asText() : "");
 
-            JsonNode publishedNode = root.get("published");
+            JsonNode publishedNode = articleNode.get("published");
             if (publishedNode != null) {
                 try {
-                    news.setPublished(LocalDateTime.parse(publishedNode.asText()));
+                    String publishedStr = publishedNode.asText();
+
+                    if (publishedStr.endsWith("Z")) {
+                        publishedStr = publishedStr.substring(0, publishedStr.length() - 1);
+                    }
+                    news.setPublished(LocalDateTime.parse(publishedStr));
                 } catch (DateTimeException e) {
                     System.err.print("Error parsing published date: " + e.getMessage());
+                    news.setPublished(LocalDateTime.now());
                 }
             }
 
 
             List<Map<String, String>> categoriesHashMapList = new ArrayList<>();
-            JsonNode categoriesNode = root.get("categories");
+            JsonNode categoriesNode = articleNode.get("categories");
 
             if (categoriesNode != null && categoriesNode.isArray()) {
                 for (JsonNode categoryNode : categoriesNode) {
