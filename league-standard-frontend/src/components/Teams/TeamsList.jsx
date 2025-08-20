@@ -1,34 +1,13 @@
 import { useFavorites } from '../Context/FavoritesContext';
-import { useState, useEffect } from 'react';
-import Loading from '../UI/Loading';
+import { useTeams } from '../Context/TeamsContext';
+
 
 
 
 function TeamsList() {
-    const [teams, setTeams] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
+    const { teams } = useTeams();
     const { favoriteTeamIDs, toggleTeamFavorite } = useFavorites();
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/teams")
-            .then(res => res.json())
-            .then(data => {
-                setTeams(data);
-                setIsLoading(false);
-            })
-            .catch(err => {
-                console.error("Error: ", err);
-                setIsLoading(false);
-            });
-    }, []);
-
-
-    if (isLoading) {
-        return (
-            <Loading />
-        )
-    }
 
     return (
         <>

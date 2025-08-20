@@ -1,14 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "../UI/Loading";
-// import { generatePlayerHeadshotPath } from "../Utilities/playerUtils.jsx";
+import { useTeams } from '../Context/TeamsContext.jsx';
 import { useTeamColors } from '../Context/TeamColorsContext.jsx';
 import ListElement from "../Players/ListElement.jsx";
 import GameElement from "../Games/GameElement.jsx";
 
 function TeamDetail() {
     const { id } = useParams();
-    const [team, setTeam] = useState(null);
+    const { teams } = useTeams();
+    const team = teams.find(t => t.id === id);
     const [players, setPlayers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const { teamColors } = useTeamColors();
@@ -16,15 +17,6 @@ function TeamDetail() {
 
     useEffect(() => {
         const fetchTeam = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/api/teams/${id}`);
-                const teamData = await response.json();
-
-                setTeam(teamData);
-            } catch (error) {
-                console.error('Error fetching team: ', error)
-            }
-
             try {
                 const response = await fetch(`http://localhost:8080/api/players/team/${id}`);
                 const playersData = await response.json();
@@ -75,7 +67,7 @@ function TeamDetail() {
             <div className="container mt-4">
                 <div className="row">
                     <div className="col-md-6 col-sm-12">
-                        <div style={{ overflow: "hidden",
+                        <div style={{ overflow: "hidden", borderRadius: "5px",
                             backgroundImage: `linear-gradient(0deg, ${(teamColors.find((color) => color.teamID == team.id && color.colorType == "secondary")?.hexCode || "#ccc")} 15%, #ffffff 25%`}} 
                             className="shadow-sm">
                             <img src={`/team-logos/${(team.name).toLowerCase()}.svg`} className='large-logo mt-2 pr-4 pl-4' alt={`${team.market} ${team.name} Logo`}/>
