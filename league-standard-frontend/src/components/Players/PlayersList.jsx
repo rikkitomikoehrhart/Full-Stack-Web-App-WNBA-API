@@ -1,42 +1,11 @@
-
-import { useState, useEffect } from 'react';
+import { usePlayers } from '../Context/PlayersContext.jsx';
 import Loading from '../UI/Loading';
 import ListElement from './ListElement.jsx';
 
 
 function PlayersList() {
-    const [players, setPlayers] = useState([])
-    const [isLoading, setIsLoading] = useState(true);
+    const { players } = usePlayers();
 
-
-
-    useEffect(() => {
-        fetch("http://localhost:8080/api/players")
-            .then(res => res.json())
-            .then(data => {
-                const sortedData = data.sort((a, b) => {
-                    const lastNameCompare = a.last_name.localeCompare(b.last_name);
-                    if (lastNameCompare !== 0) {
-                        return lastNameCompare;
-                    }
-                    return a.first_name.localeCompare(b.first_name);
-                });
-                setPlayers(sortedData);
-                setIsLoading(false);
-            })
-            .catch(err => {
-                console.error("Error: ", err);
-                setIsLoading(false);
-            });
-    }, []);
-
-
-
-    if (isLoading) {
-        return (
-            <Loading />
-        )
-    }
 
     return(
         <>

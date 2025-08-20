@@ -1,39 +1,16 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Loading from "../UI/Loading";
+
 import { generatePlayerHeadshotPath, getFormattedDate } from "../Utilities/playerUtils.jsx";
 import { useTeamColors } from '../Context/TeamColorsContext.jsx';
+import { usePlayers } from "../Context/PlayersContext.jsx";
 
 
 function PlayerDetail() {
     const { id } = useParams();
-    const [player, setPlayer] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const { players } = usePlayers();
+    const player = players.find(p => p.id === id);
     const { teamColors } = useTeamColors();
 
-    useEffect(() => {
-        const fetchPlayer = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/api/players/${id}`);
-                const playerData = await response.json();
-
-                setPlayer(playerData);
-            } catch (error) {
-                console.error('Error fetching player: ', error)
-            } finally {
-                setIsLoading(false)
-            }
-        };
-
-        fetchPlayer();
-    }, [id]);
-
-
-    if (isLoading) {
-        return (
-            <Loading />
-        )
-    }
 
     if (!player) {
         return (
