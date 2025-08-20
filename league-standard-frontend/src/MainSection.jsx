@@ -7,6 +7,7 @@ import Standings from './components/Standings/Standings';
 import PlayersList from './components/Players/PlayersList';
 import PlayerDetail from './components/Players/PlayerDetail';
 import TeamDetail from './components/Teams/TeamDetail';
+import NewsList from './components/News/NewsList';
 
 function MainSection() {
     
@@ -24,7 +25,7 @@ function MainSection() {
                         <BrowserRouter>
                             <div id="routerTarget">
                                 <Routes>
-                                    <Route path="/" element={<Standings />} />
+                                    <Route path="/" element={<NewsList />} />
                                     <Route path="/standings" element={<Standings />} />
                                     <Route path="/games" element={<GamesList />} />
                                     <Route path="/teams" element={<TeamsList />} />
