@@ -4,6 +4,7 @@ import { FavoritesProvider } from "./components/Context/FavoritesContext";
 import { TeamColorsProvider } from "./components/Context/TeamColorsContext";
 import { TeamsProvider } from "./components/Context/TeamsContext";
 import { PlayerProvider } from "./components/Context/PlayersContext";
+import { BookmarksProvider } from "./components/Context/BookmarksContext";
 
 
 function App() {
@@ -11,13 +12,15 @@ function App() {
   return (
     <TeamsProvider>
       <PlayerProvider>
-        <FavoritesProvider>
-          <TeamColorsProvider>
-            <NavBar />
-            <div className="mt-4"></div>
-            <MainSection />
-          </TeamColorsProvider>
-        </FavoritesProvider>
+        <BookmarksProvider>
+          <FavoritesProvider>
+            <TeamColorsProvider>
+              <NavBar />
+              <div className="mt-4"></div>
+              <MainSection />
+            </TeamColorsProvider>
+          </FavoritesProvider>
+        </BookmarksProvider>
       </PlayerProvider>
     </TeamsProvider>
   );
