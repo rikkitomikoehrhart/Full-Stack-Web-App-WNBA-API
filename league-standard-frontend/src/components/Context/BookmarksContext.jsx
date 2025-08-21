@@ -24,12 +24,12 @@ export const BookmarksProvider = ({ children }) => {
             setBookmarks(jsonResponse);
             setBookmarksID(new Set(jsonResponse.map(bookmark => bookmark.id)));
         } catch (error) {
-            console.err("Error fetching bookmarks: ", error);
+            console.error("Error fetching bookmarks: ", error);
         }
     };
 
     const toggleNewsBookmark = async (id) => {
-        const isBookmarked = bookmarksIDs.find(b => b.news.id == id);
+        const isBookmarked = bookmarks.find(b => b.news && b.news.id == id);
 
         try {
             if (isBookmarked) {
@@ -42,10 +42,11 @@ export const BookmarksProvider = ({ children }) => {
         } catch (error) {
             console.error("Error toggling news bookmark: ", error);
         }
+
     }
 
     const toggleGameBookmark = async (id) => {
-        const isBookmarked = bookmarksIDs.find(b => b.game.id == id);
+        const isBookmarked = bookmarks.find(b => b.game && b.game.id == id);
 
         try {
             if (isBookmarked) {
@@ -65,7 +66,7 @@ export const BookmarksProvider = ({ children }) => {
     }, []);
 
     return (
-        <BookmarksContext.Provider value={{ bookmarks, bookmarksIDs, toggleNewsBookmark, toggleGameBookmark, refreshBookmarks: fetchBookmarks, useBookmarks }}>
+        <BookmarksContext.Provider value={{ bookmarks, bookmarksIDs, toggleNewsBookmark, toggleGameBookmark, refreshBookmarks: fetchBookmarks }}>
             {children}
         </BookmarksContext.Provider>
     )

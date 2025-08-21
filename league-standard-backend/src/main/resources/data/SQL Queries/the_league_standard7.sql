@@ -1,5 +1,5 @@
 CREATE TABLE bookmarks (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    news_id INT NULL,
-    game_id INT NULL
+    news_id VARCHAR(100) NULL,
+    game_id VARCHAR(100) NULL
 );

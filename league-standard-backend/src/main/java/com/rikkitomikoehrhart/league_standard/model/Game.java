@@ -91,10 +91,16 @@ public class Game {
 
 
     public String getHomeTeamID() {
+        if (this.homeTeam == null) {
+            return null;
+        }
         return homeTeam.getId();
     }
 
     public String getAwayTeamID() {
+        if (this.awayTeam == null) {
+            return null;
+        }
         return awayTeam.getId();
     }
 }

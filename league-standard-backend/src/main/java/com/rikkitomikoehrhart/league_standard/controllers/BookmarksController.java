@@ -1,6 +1,8 @@
 package com.rikkitomikoehrhart.league_standard.controllers;
 
 import com.rikkitomikoehrhart.league_standard.data.BookmarksRepo;
+import com.rikkitomikoehrhart.league_standard.data.GameRepo;
+import com.rikkitomikoehrhart.league_standard.data.NewsRepo;
 import com.rikkitomikoehrhart.league_standard.model.Bookmark;
 import com.rikkitomikoehrhart.league_standard.model.Game;
 import com.rikkitomikoehrhart.league_standard.model.News;
@@ -15,13 +17,19 @@ import java.util.List;
 @RequestMapping("api/bookmarks")
 public class BookmarksController {
 
+
     @Autowired
     private BookmarksRepo bookmarksRepo;
 
+    @Autowired
+    private NewsRepo newsRepo;
+
+    @Autowired
+    private GameRepo gameRepo;
+
     @PostMapping("/news/{id}")
     public ResponseEntity<String> addNewsBookmark(@PathVariable String id) {
-        News news = new News();
-        news.setId(id);
+        News news = newsRepo.getNewsByID(id);
         Bookmark bookmark = new Bookmark();
         bookmark.setNews(news);
 
@@ -31,8 +39,7 @@ public class BookmarksController {
 
     @PostMapping("/games/{id}")
     public ResponseEntity<String> addGamesBookmark(@PathVariable String id) {
-        Game game = new Game();
-        game.setId(id);
+        Game game = gameRepo.getGameByID(id);
         Bookmark bookmark = new Bookmark();
         bookmark.setGame(game);
 

@@ -1,8 +1,11 @@
 package com.rikkitomikoehrhart.league_standard.data.impl;
 
 import com.rikkitomikoehrhart.league_standard.data.BookmarksRepo;
+import com.rikkitomikoehrhart.league_standard.data.GameRepo;
+import com.rikkitomikoehrhart.league_standard.data.NewsRepo;
 import com.rikkitomikoehrhart.league_standard.data.mappers.BookmarksMapper;
 import com.rikkitomikoehrhart.league_standard.model.Bookmark;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -15,6 +18,12 @@ public class MySQLBookmarkRepo implements BookmarksRepo {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private NewsRepo newsRepo;
+
+    @Autowired
+    private GameRepo gameRepo;
+
     private BookmarksMapper mapper = new BookmarksMapper();
 
     @Override
@@ -25,7 +34,7 @@ public class MySQLBookmarkRepo implements BookmarksRepo {
         """;
 
         try {
-            return jdbcTemplate.queryForObject(sql, mapper.bookmarkRowMapper(), id);
+            return jdbcTemplate.queryForObject(sql, mapper.bookmarkRowMapper(newsRepo, gameRepo), id);
         } catch (Exception e) {
             System.err.println("Bookmark not found with id: " + id);
             return null;
@@ -38,7 +47,7 @@ public class MySQLBookmarkRepo implements BookmarksRepo {
         SELECT * FROM bookmarks
         """;
 
-        return jdbcTemplate.query(sql, mapper.bookmarkRowMapper());
+        return jdbcTemplate.query(sql, mapper.bookmarkRowMapper(newsRepo, gameRepo));
     }
 
     @Override
