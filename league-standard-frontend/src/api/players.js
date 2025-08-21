@@ -25,7 +25,7 @@ export const playersAPI = {
         return response.json();
     },
     getPlayersByTeam: async (teamID) => {
-        const response = await fetch(`${API_BASE_URL}/players/${teamID}`);
+        const response = await fetch(`${API_BASE_URL}/players/team/${teamID}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch players for team ${teamID}`);
         }

@@ -3,6 +3,18 @@ import { useBookmarks } from "../Context/BookmarksContext";
 function GameElement({ game }) {
     const { bookmarks, toggleGameBookmark } = useBookmarks();
 
+
+    if (!game) {
+        return(
+            <div className="mt-5 text-center shadow-sm">
+                <div className="card-body">
+                    <p className="text-muted">Game information not available</p>
+                </div>
+            </div>
+        );
+    }
+
+
     let isBookmarked = false;
     if (Array.isArray(bookmarks)) {
         isBookmarked = bookmarks.find(b => b.game && b.game.id === game.id);

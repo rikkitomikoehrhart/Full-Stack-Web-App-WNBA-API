@@ -1,42 +1,18 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Loading from "../UI/Loading";
 import { useTeamByID } from "../../hooks/useTeams.js";
 import { useTeamColors } from '../Context/TeamColorsContext.jsx';
 import ListElement from "../Players/ListElement.jsx";
 import GameElement from "../Games/GameElement.jsx";
 import { usePlayersByTeam } from "../../hooks/usePlayers.js";
+import { useNextGameByTeam } from "../../hooks/useGames.js";
 
 function TeamDetail() {
     const { id } = useParams();
     const { data: team, error: teamsError } = useTeamByID(id);
     const { data: players, error: playersError } = usePlayersByTeam(id);
-    const [isLoading, setIsLoading] = useState(true);
+    const { data: game, error: gameError } = useNextGameByTeam(id);
     const { teamColors } = useTeamColors();
-    const [game, setGame] = useState(null);
 
-    useEffect(() => {
-        const fetchNextGame = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/api/games/next/${id}`);
-                const gameData = await response.json();
-
-                setGame(gameData);
-            } catch (error) {
-                console.error('Error fetching gameData: ', error)
-            } finally {
-                setIsLoading(false)
-            }
-        };
-
-        fetchNextGame();
-    }, [id]);
-
-    if (isLoading) {
-        return (
-            <Loading />
-        )
-    }
 
     if (!team) {
         return (
@@ -48,12 +24,19 @@ function TeamDetail() {
         )
     }
 
-    if (playersError) {
-        console.log("Error loading players: ", playersError);
-    }
-    
+
+
     if (teamsError) {
         console.log("Error loading team: ", teamsError);
+    }
+
+    if (gameError) {
+        console.log("Error loading next game: ", gameError);
+    }
+
+    if (playersError) {
+        console.log(players);
+        console.log("Error loading players: ", playersError);
     }
 
 
@@ -100,7 +83,7 @@ function TeamDetail() {
 
                 <div className="row g-3 mt-4">
                     <h3>Players</h3>
-                    <ListElement players={players} displayHeaders={false} />
+                    <ListElement players={players || []} displayHeaders={false} />
                 </div>
             </div>
         </>
