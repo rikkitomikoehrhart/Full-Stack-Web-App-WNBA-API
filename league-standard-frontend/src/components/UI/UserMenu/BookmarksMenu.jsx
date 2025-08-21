@@ -14,11 +14,7 @@ function BookmarksMenu() {
                     {bookmarks.length > 0 ? (
                         <ul className="list-group list-group-flush">
                             {bookmarks.map(bookmark => (
-                                <li key={bookmark.id} className="list-group-item">
-                                    <a href={`/news/${bookmark.news.id}`}>
-                                        {getFormattedHeadline(bookmark.news.headline)}
-                                    </a>
-                                </li>
+                                getFormattedBookmark(bookmark)
                             ))}
                         </ul>
                     ) : (
@@ -30,12 +26,44 @@ function BookmarksMenu() {
     );
 }
 
-function getFormattedHeadline(headlineString) {
-    if (headlineString.length <= 25) {
-        return headlineString
+function getFormattedBookmark(bookmark) {
+    if (bookmark.news) {
+        if (bookmark.news.headline <= 25) {
+            return (
+                <li key={bookmark.id} className="list-group-item">
+                    <a href={`/news/${bookmark.news.id}`}>
+                        {bookmark.news.headline}
+                    </a>
+                </li>
+
+            );
+        } else {
+            let headline = (bookmark.news.headline).slice(0, 25) + "...";
+            return (
+                <li key={bookmark.id} className="list-group-item">
+                    <a href={`/news/${bookmark.news.id}`}>
+                        {headline}
+                    </a>
+                </li>
+
+            );
+        }
     } else {
-        return headlineString.slice(0, 25) + "...";
+        const gameDate = new Date(bookmark.game.scheduled + 'T12:00:00').toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        })
+        return (
+            <li key={bookmark.id} className="list-group-item">
+                <a href={`/games/${bookmark.game.id}`}>
+                    {gameDate + " | " + bookmark.game.homeTeam.alias + " v. " + bookmark.game.awayTeam.alias}
+                </a>
+            </li>
+
+        );
     }
+
 }
 
 export default BookmarksMenu;

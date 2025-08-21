@@ -50,9 +50,9 @@ export const BookmarksProvider = ({ children }) => {
 
         try {
             if (isBookmarked) {
-                await fetch(`http://localhost:8080/api/bookmarks/game/${id}`, { method: "DELETE" });
+                await fetch(`http://localhost:8080/api/bookmarks/games/${id}`, { method: "DELETE" });
             } else {
-                await fetch(`http://localhost:8080/api/bookmarks/game/${id}`, { method: "POST" });
+                await fetch(`http://localhost:8080/api/bookmarks/games/${id}`, { method: "POST" });
             }
 
             await fetchBookmarks();
