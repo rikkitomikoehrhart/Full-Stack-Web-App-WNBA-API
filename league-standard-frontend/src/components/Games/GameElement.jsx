@@ -5,7 +5,7 @@ function GameElement({ game }) {
 
     let isBookmarked = false;
     if (Array.isArray(bookmarks)) {
-        isBookmarked = bookmarks.find(b => b.games && b.games.id === game.id);
+        isBookmarked = bookmarks.find(b => b.game && b.game.id === game.id);
     }
 
     return(
