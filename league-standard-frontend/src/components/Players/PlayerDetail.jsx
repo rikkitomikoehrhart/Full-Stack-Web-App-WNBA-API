@@ -1,15 +1,24 @@
 import { useParams } from "react-router-dom";
-
+import { usePlayer } from "../../hooks/usePlayers.js";
 import { generatePlayerHeadshotPath, getFormattedDate } from "../Utilities/playerUtils.jsx";
 import { useTeamColors } from '../Context/TeamColorsContext.jsx';
-import { usePlayers } from "../Context/PlayersContext.jsx";
+
 
 
 function PlayerDetail() {
     const { id } = useParams();
-    const { players } = usePlayers();
-    const player = players.find(p => p.id === id);
+    const { data: player, error } = usePlayer(id);
     const { teamColors } = useTeamColors();
+
+    if (error) {
+        return (
+            <div className="text-center mt-5">
+                <h3>Error loading player</h3>
+                <p className="text-muted">{error.message}</p>
+            </div>
+        );
+    }
+
 
 
     if (!player) {
