@@ -1,13 +1,20 @@
 import { useFavorites } from '../Context/FavoritesContext';
-import { useTeams } from '../Context/TeamsContext';
-
+import { useTeams } from '../../hooks/useTeams';
 
 
 
 function TeamsList() {
-    const { teams } = useTeams();
+    const { data: teams = [], error } = useTeams();
     const { favoriteTeamIDs, toggleTeamFavorite } = useFavorites();
 
+    if (error) {
+        return(
+            <div className='text-center mt-5'>
+                <h3>Error loading teams</h3>
+                <p className='text-muted'>{error.message}</p>
+            </div>
+        );
+    };
 
     return (
         <>

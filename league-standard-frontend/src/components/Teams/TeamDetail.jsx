@@ -1,31 +1,22 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "../UI/Loading";
-import { useTeams } from '../Context/TeamsContext.jsx';
+import { useTeamByID } from "../../hooks/useTeams.js";
 import { useTeamColors } from '../Context/TeamColorsContext.jsx';
 import ListElement from "../Players/ListElement.jsx";
 import GameElement from "../Games/GameElement.jsx";
+import { usePlayersByTeam } from "../../hooks/usePlayers.js";
 
 function TeamDetail() {
     const { id } = useParams();
-    const { teams } = useTeams();
-    const team = teams.find(t => t.id === id);
-    const [players, setPlayers] = useState([]);
+    const { data: team, error: teamsError } = useTeamByID(id);
+    const { data: players, error: playersError } = usePlayersByTeam(id);
     const [isLoading, setIsLoading] = useState(true);
     const { teamColors } = useTeamColors();
     const [game, setGame] = useState(null);
 
     useEffect(() => {
-        const fetchTeam = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/api/players/team/${id}`);
-                const playersData = await response.json();
-
-                setPlayers(playersData);
-            } catch (error) {
-                console.error('Error fetching players: ', error)
-            }
-
+        const fetchNextGame = async () => {
             try {
                 const response = await fetch(`http://localhost:8080/api/games/next/${id}`);
                 const gameData = await response.json();
@@ -38,7 +29,7 @@ function TeamDetail() {
             }
         };
 
-        fetchTeam();
+        fetchNextGame();
     }, [id]);
 
     if (isLoading) {
@@ -57,6 +48,13 @@ function TeamDetail() {
         )
     }
 
+    if (playersError) {
+        console.log("Error loading players: ", playersError);
+    }
+    
+    if (teamsError) {
+        console.log("Error loading team: ", teamsError);
+    }
 
 
     return (

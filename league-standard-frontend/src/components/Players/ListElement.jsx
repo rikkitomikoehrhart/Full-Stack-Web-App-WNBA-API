@@ -3,7 +3,7 @@ import { generatePlayerHeadshotPath } from "../Utilities/playerUtils.jsx";
 import { useTeamColors } from '../Context/TeamColorsContext.jsx';
 
 
-function ListElement( { players, displayHeaders } ) {
+function ListElement( { players = [], displayHeaders = false } ) {
     const { teamColors } = useTeamColors();
     const { favoritePlayerIDs, togglePlayerFavorite } = useFavorites();
 
