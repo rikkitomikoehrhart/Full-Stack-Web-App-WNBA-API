@@ -9,9 +9,11 @@ export const gamesAPI = {
 
         const gameData = await response.json();
 
-        const sortedGames = gameData.sort((a, b) =>
-            new Date(a.scheduled) - new Date(b.scheduled)
-        );
+        const sortedGames = gameData.sort((a, b) => {
+            const dateA = new Date(a.scheduled);
+            const dateB = new Date(b.scheduled);
+            return dateA - dateB;
+        });
 
         return sortedGames;
     },

@@ -34,7 +34,7 @@ public class GamesRowMapper {
             awayTeam.setOwner(rs.getString("away_team_owner"));
             game.setAwayTeam(awayTeam);
 
-            game.setScheduled(rs.getDate("scheduled_date").toLocalDate());
+            game.setScheduled(rs.getTimestamp("scheduled_date").toLocalDateTime().toLocalDate());
             game.setStatus(rs.getString("status"));
             game.setHomeScore(rs.getInt("home_score"));
             game.setAwayScore(rs.getInt("away_score"));

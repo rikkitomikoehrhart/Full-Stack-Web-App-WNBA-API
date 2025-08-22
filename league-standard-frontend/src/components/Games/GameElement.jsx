@@ -24,7 +24,7 @@ function GameElement({ game }) {
         <>
             <div key={game.id} className="mt-5 card text-center shadow-sm">
                 <div className='card-header'>
-                    {new Date(game.scheduled + 'T12:00:00').toLocaleDateString('en-US', {
+                    {new Date(game.scheduled).toLocaleDateString('en-US', {
                         weekday: 'short',
                         year: 'numeric',
                         month: 'short',

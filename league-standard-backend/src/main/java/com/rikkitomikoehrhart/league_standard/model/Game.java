@@ -1,5 +1,7 @@
 package com.rikkitomikoehrhart.league_standard.model;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 import java.time.LocalDate;
 
 public class Game {
@@ -55,6 +57,15 @@ public class Game {
 
     public void setScheduled(LocalDate scheduled) {
         this.scheduled = scheduled;
+    }
+
+    @JsonGetter("scheduled")
+    public String getScheduledForJson() {
+        if (scheduled == null) {
+            return null;
+        }
+
+        return scheduled + " 00:00:00";
     }
 
     public String getStatus() {

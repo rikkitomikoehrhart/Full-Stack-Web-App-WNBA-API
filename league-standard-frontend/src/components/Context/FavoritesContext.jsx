@@ -70,7 +70,7 @@ export const FavoritesProvider = ({ children }) => {
     }, []);
 
     return (
-        <FavoritesContext.Provider value={{ favoriteTeams, favoritePlayers, favoriteTeamIDs, favoritePlayerIDs, toggleTeamFavorite, togglePlayerFavorite, refreshFavorites: fetchFavorites, useFavorites }}>
+        <FavoritesContext.Provider value={{ favoriteTeams, favoritePlayers, favoriteTeamIDs, favoritePlayerIDs, toggleTeamFavorite, togglePlayerFavorite, refreshFavorites: fetchFavorites }}>
             {children}
         </FavoritesContext.Provider>
     )
