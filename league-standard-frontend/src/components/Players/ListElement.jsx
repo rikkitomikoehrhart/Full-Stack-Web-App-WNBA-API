@@ -1,3 +1,4 @@
+import React from 'react';
 import { useFavorites } from '../Context/FavoritesContext.jsx';
 import { useTeamColors } from '../../hooks/useTeamColors.js';
 import ErrorMessage from '../UI/ErrorMessage';
@@ -24,7 +25,7 @@ function ListElement( { players = [], displayHeaders = false } ) {
                     (player.last_name.charAt(0) !== players[index - 1].last_name.charAt(0));
                 
                 return (
-                    <>
+                    <React.Fragment key={player.id}>
                         {showLetterHeader && displayHeaders && (
                             <div className='col-12'>
                                 <h1 className='mt-4'>{player.last_name.charAt(0)}</h1>
@@ -64,7 +65,7 @@ function ListElement( { players = [], displayHeaders = false } ) {
 
 
                         </div>
-                    </>
+                    </React.Fragment>
                 );
             })}
         </>

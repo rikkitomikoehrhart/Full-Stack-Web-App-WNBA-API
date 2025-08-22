@@ -60,22 +60,25 @@ function TeamDetail() {
                     </div>
                     <div className="col-md-6 col-sm-12">
                         <table className="table table-borderless align-middle stats-table table-responsive">
-                            <tr>
-                                <th>MARKET</th>
-                                <th>NAME</th>
-                            </tr>
-                            <tr>
-                                <td>{team.market}<br /> ( {team.alias} )</td>
-                                <td>{team.name}</td>
-                            </tr>
-                            <tr>
-                                <th>MASCOT</th>
-                                <th>OWNER</th>
-                            </tr>
-                            <tr>
-                                <td>{team.mascot}</td>
-                                <td>{team.owner}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <th>MARKET</th>
+                                    <th>NAME</th>
+                                </tr>
+                                <tr>
+                                    <td>{team.market}<br /> ( {team.alias} )</td>
+                                    <td>{team.name}</td>
+                                </tr>
+                                <tr>
+                                    <th>MASCOT</th>
+                                    <th>OWNER</th>
+                                </tr>
+                                <tr>
+                                    <td>{team.mascot}</td>
+                                    <td>{team.owner}</td>
+                                </tr>
+                            </tbody>
+                            
                         </table>
                     </div>
 

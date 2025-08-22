@@ -47,39 +47,42 @@ function PlayerDetail() {
                     </div>
                     <div className="col-md-6 col-sm-12">
                         <table className="table table-borderless align-middle stats-table table-responsive">
-                            <tr>
-                                <th>HEIGHT</th>
-                                <th>EXPERIENCE</th>
-                            </tr>
-                            <tr>
-                                <td>{getFormattedHeight(player.height)}</td>
-                                <td>{player.experience} years</td>
-                            </tr>
-                            <tr>
-                                <th>COLLEGE</th>
-                                <th>DRAFT</th>
-                            </tr>
-                            <tr>
-                                <td>{player.college}</td>
-                                <td>{player.rookie_year} - Round {player.draft_round}, Pick {player.draft_pick}</td>
-                            </tr>
-                            <tr>
-                                <th>AGE</th>
-                                <th>BIRTH PLACE</th>
-                            </tr>
-                            <tr>
-                                <td>{getFormattedAge(player.birthdate)} years old</td>
-                                <td>{player.birth_place}</td>
-                            </tr>
-                            <tr>
-                                <th>BIRTHDAY</th>
-                                <th>SIGN</th>
-                            </tr>
-                            <tr>
-                                <td>{getFormattedDate(player.birthdate)}</td>
-                                <td>{getZodiacSign(player.birthdate)}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <th>HEIGHT</th>
+                                    <th>EXPERIENCE</th>
+                                </tr>
+                                <tr>
+                                    <td>{getFormattedHeight(player.height)}</td>
+                                    <td>{player.experience} years</td>
+                                </tr>
+                                <tr>
+                                    <th>COLLEGE</th>
+                                    <th>DRAFT</th>
+                                </tr>
+                                <tr>
+                                    <td>{player.college}</td>
+                                    <td>{player.rookie_year} - Round {player.draft_round}, Pick {player.draft_pick}</td>
+                                </tr>
+                                <tr>
+                                    <th>AGE</th>
+                                    <th>BIRTH PLACE</th>
+                                </tr>
+                                <tr>
+                                    <td>{getFormattedAge(player.birthdate)} years old</td>
+                                    <td>{player.birth_place}</td>
+                                </tr>
+                                <tr>
+                                    <th>BIRTHDAY</th>
+                                    <th>SIGN</th>
+                                </tr>
+                                <tr>
+                                    <td>{getFormattedDate(player.birthdate)}</td>
+                                    <td>{getZodiacSign(player.birthdate)}</td>
+                                </tr>
 
+                            </tbody>
+                            
                         </table>
 
                     </div>
