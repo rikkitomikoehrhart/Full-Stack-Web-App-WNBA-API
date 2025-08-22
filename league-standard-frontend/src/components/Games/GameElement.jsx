@@ -1,17 +1,12 @@
 import { useBookmarks } from "../Context/BookmarksContext";
+import ErrorMessage from "../UI/ErrorMessage";
 
 function GameElement({ game }) {
     const { bookmarks, toggleGameBookmark } = useBookmarks();
 
 
     if (!game) {
-        return(
-            <div className="mt-5 text-center shadow-sm">
-                <div className="card-body">
-                    <p className="text-muted">Game information not available</p>
-                </div>
-            </div>
-        );
+        return <ErrorMessage message={"Game information is not available..."} title="Error..." />
     }
 
 

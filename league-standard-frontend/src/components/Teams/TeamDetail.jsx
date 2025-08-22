@@ -5,41 +5,39 @@ import ListElement from "../Players/ListElement.jsx";
 import GameElement from "../Games/GameElement.jsx";
 import { usePlayersByTeam } from "../../hooks/usePlayers.js";
 import { useNextGameByTeam } from "../../hooks/useGames.js";
+import ErrorMessage from "../UI/ErrorMessage.jsx";
 
 function TeamDetail() {
     const { id } = useParams();
     const { data: team, error: teamsError } = useTeamByID(id);
     const { data: players, error: playersError } = usePlayersByTeam(id);
     const { data: game, error: gameError } = useNextGameByTeam(id);
-    const { data: teamColors, colorError } = useTeamColors();
+    const { data: teamColors, isLoading, colorError } = useTeamColors();
+
+
+    if (isLoading) {
+        return <Loading />
+    }
 
 
     if (!team) {
-        return (
-            <>
-                <div className="text-center">
-                    <h2>Team not found</h2>
-                </div>
-            </>
-        )
+        return <ErrorMessage message={"Team not found"} title="Error..."/>
     }
 
-
-
     if (teamsError) {
-        console.log("Error loading team: ", teamsError);
+        return <ErrorMessage message={teamsError.message} title="Error Loading Team..." />
     }
 
     if (gameError) {
-        console.log("Error loading next game: ", gameError);
+        return <ErrorMessage message={gameError.message} title="Error Loading Next Game..." />
     }
 
     if (playersError) {
-        console.log(players);
-        console.log("Error loading players: ", playersError);
+        return <ErrorMessage message={playersError.message} title="Error Loading Players..." />
     }
+    
     if (colorError) {
-        console.log("Error loading team colors: ", colorError)
+        return <ErrorMessage message={colorError.message} title="Error Loading Team Colors..." />
     }
 
 

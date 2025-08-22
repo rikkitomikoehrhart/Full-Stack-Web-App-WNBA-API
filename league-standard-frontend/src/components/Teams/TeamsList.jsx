@@ -1,20 +1,24 @@
 import { useFavorites } from '../Context/FavoritesContext';
 import { useTeams } from '../../hooks/useTeams';
-
+import ErrorMessage from '../UI/ErrorMessage';
 
 
 function TeamsList() {
-    const { data: teams = [], error } = useTeams();
+    const { data: teams = [], isLoading, error } = useTeams();
     const { favoriteTeamIDs, toggleTeamFavorite } = useFavorites();
 
+
+    if (isLoading) {
+        return <Loading />
+    }
+
+
+
     if (error) {
-        return(
-            <div className='text-center mt-5'>
-                <h3>Error loading teams</h3>
-                <p className='text-muted'>{error.message}</p>
-            </div>
-        );
-    };
+        return <ErrorMessage message={error.message} title='Error Loading Teams...' />
+    }
+
+
 
     return (
         <>

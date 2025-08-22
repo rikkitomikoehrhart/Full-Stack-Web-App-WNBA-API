@@ -1,47 +1,25 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNewsByID } from '../../hooks/useNews.js';
+import ErrorMessage from '../UI/ErrorMessage.jsx';
 import Loading from "../UI/Loading";
 import { getFormattedDateTime } from "../Utilities/playerUtils.jsx";
 import Gallery from "../UI/Elements/Gallery.jsx";
 
 function NewsDetail() {
     const { id } = useParams();
-    const [article, setArticle] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-
-
-    useEffect(() => {
-        const fetchArticle = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/api/news/${id}`);
-                const articleData = await response.json();
-
-                setArticle(articleData);
-            } catch (error) {
-                console.error('Error fetching article: ', error)
-            } finally {
-                setIsLoading(false)
-            }
-        };
-
-        fetchArticle();
-    }, [id]);
-
+    const { data: article, isLoading, error } = useNewsByID(id);
 
     if (isLoading) {
-        return (
-            <Loading />
-        )
+        return <Loading />
+    }
+
+
+    if (error) {
+        return <ErrorMessage message={error.message} title="Error Loading Article..." />
     }
 
     if (!article) {
-        return (
-            <>
-                <div className="text-center">
-                    <h2>Article not found</h2>
-                </div>
-            </>
-        )
+        return <ErrorMessage message="Article not found" title="Error..." />
     }
 
 

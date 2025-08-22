@@ -1,18 +1,18 @@
 import { useFavorites } from '../Context/FavoritesContext.jsx';
 import { generatePlayerHeadshotPath } from "../Utilities/playerUtils.jsx";
 import { useTeamColors } from '../../hooks/useTeamColors.js';
-
+import ErrorMessage from '../UI/ErrorMessage';
 
 function ListElement( { players = [], displayHeaders = false } ) {
-    const { data: teamColors =[], error } = useTeamColors();
+    const { data: teamColors =[], isLoading, error } = useTeamColors();
     const { favoritePlayerIDs, togglePlayerFavorite } = useFavorites();
 
+    if (isLoading) {
+        return <Loading />
+    }
+
     if (error) {
-        return (
-            <div className='text-center mt-4'>
-                <p className='text-muted'>Error loading team colors</p>
-            </div>
-        )
+        return <ErrorMessage message={error.message} title="Error Loading Team Colors..." />
     }
 
 
@@ -23,7 +23,7 @@ function ListElement( { players = [], displayHeaders = false } ) {
                     (player.last_name.charAt(0) !== players[index - 1].last_name.charAt(0));
                 
                 return (
-                    <> {/* Use this instead of React.Fragment */}
+                    <>
                         {showLetterHeader && displayHeaders && (
                             <div className='col-12'>
                                 <h1 className='mt-4'>{player.last_name.charAt(0)}</h1>

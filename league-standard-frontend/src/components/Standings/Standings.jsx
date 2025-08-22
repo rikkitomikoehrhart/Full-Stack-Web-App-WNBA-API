@@ -1,30 +1,18 @@
-import { useState, useEffect } from 'react';
 import Loading from '../UI/Loading';
+import { useStandings } from '../../hooks/useStandings';
+import ErrorMessage from '../UI/ErrorMessage';
 
 function Standings() {
-    const [teamStanding, setTeamStanding] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { data: teamStanding = [], isLoading, error } = useStandings();
 
-useEffect(() => {
-        fetch("http://localhost:8080/api/standings")
-            .then(res => res.json())
-            .then(data => {
-                const sortedData = data.sort((a, b) => a.league_rank - b.league_rank);
-                setTeamStanding(sortedData);
-                setIsLoading(false);
-            })
-            .catch(err => {
-                console.error("Error: ", err);
-                setIsLoading(false);
-            });
-    }, []);
-
+    if (error) {
+        return <ErrorMessage message={error.message} title='Error Loading Standings...' />
+    }
 
     if (isLoading) {
-        return (
-            <Loading />
-        )
+        return <Loading />
     }
+
 
 
     return (

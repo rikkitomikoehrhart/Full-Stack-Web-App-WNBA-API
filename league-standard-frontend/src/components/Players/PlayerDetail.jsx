@@ -1,34 +1,30 @@
 import { useParams } from "react-router-dom";
 import { usePlayer } from "../../hooks/usePlayers.js";
-import { generatePlayerHeadshotPath, getFormattedDate } from "../Utilities/playerUtils.jsx";
+import { generatePlayerHeadshotPath, getFormattedDate, getFormattedHeight, getFormattedAge, getZodiacSign } from "../Utilities/playerUtils.jsx";
 import { useTeamColors } from "../../hooks/useTeamColors.js";
-
+import ErrorMessage from '../UI/ErrorMessage';
 
 
 function PlayerDetail() {
     const { id } = useParams();
     const { data: player, error } = usePlayer(id);
-    const { data: teamColors, colorsError } = useTeamColors();
+    const { data: teamColors, isLoading, colorsError } = useTeamColors();
 
-    if (error || colorsError) {
-        return (
-            <div className="text-center mt-5">
-                <h3>Error loading player</h3>
-                <p className="text-muted">{error.message}</p>
-            </div>
-        );
+    if (isLoading) {
+        return <Loading />
     }
 
 
+    if (error) {
+        return <ErrorMessage message={error.message} title="Error Loading Player..." />
+    }
+
+    if (colorsError) {
+        return <ErrorMessage message={colorsError.message} title="Error Loading Team Colors..."/>
+    }
 
     if (!player) {
-        return (
-            <>
-                <div className="text-center">
-                    <h2>Player not found</h2>
-                </div>
-            </>
-        )
+        return <ErrorMessage message="Player not found." title="Error..." />
     }
 
     return (
@@ -89,106 +85,5 @@ function PlayerDetail() {
         </>
     );
 }
-
-function getFormattedHeight(height) {
-    const feet = Math.floor(height/12);
-    const inches = height%12;
-
-    return feet + `" ` + inches + `'`;
-}
-
-function getFormattedAge(birthdateString) {
-    const birthdate = new Date(birthdateString);
-    const today = new Date();
-
-    let age = today.getFullYear() - birthdate.getFullYear();
-    const monthDifference = today.getMonth() - birthdate.getMonth();
-    const dayDifference = today.getDate() - birthdate.getDate();
-
-    if (monthDifference < 0 || (monthDifference === 0 && dayDifference <0)) {
-        age--;
-    }
-
-    return age;
-}
-
-function getZodiacSign(birthdateString) {
-    const birthdate = new Date(birthdateString);
-
-    if (birthdate.getMonth() == 0) {
-        if (birthdate.getDate() <= 19) {
-            return "Capricorn";
-        } else {
-            return "Aquarius";
-        }
-    } else if (birthdate.getMonth() == 1) {
-        if (birthdate.getDate() <= 18) {
-            return "Aquarius";
-        } else {
-            return "Pisces";
-        }
-    } else if (birthdate.getMonth() == 2) {
-        if (birthdate.getDate() <= 20) {
-            return "Pisces";
-        } else {
-            return "Aries";
-        }
-    } else if (birthdate.getMonth() == 3) {
-        if (birthdate.getDate() <= 19) {
-            return "Aries";
-        } else {
-            return "Taurus";
-        }
-    } else if (birthdate.getMonth() == 4) {
-        if (birthdate.getDate() <= 20) {
-            return "Taurus";
-        } else {
-            return "Gemini";
-        }
-    } else if (birthdate.getMonth() == 5) {
-        if (birthdate.getDate() <= 21) {
-            return "Gemini";
-        } else {
-            return "Cancer";
-        }
-    } else if (birthdate.getMonth() == 6) {
-        if (birthdate.getDate() <= 22) {
-            return "Cancer";
-        } else {
-            return "Leo";
-        }
-    } else if (birthdate.getMonth() == 7) {
-        if (birthdate.getDate() <= 22) {
-            return "Leo";
-        } else {
-            return "Virgo";
-        }
-    } else if (birthdate.getMonth() == 8) {
-        if (birthdate.getDate() <= 22) {
-            return "Virgo";
-        } else {
-            return "Libra";
-        }
-    } else if (birthdate.getMonth() == 9) {
-        if (birthdate.getDate() <= 23) {
-            return "Libra";
-        } else {
-            return "Scorpio";
-        }
-    } else if (birthdate.getMonth() == 10) {
-        if (birthdate.getDate() <= 21) {
-            return "Scorpio";
-        } else {
-            return "Sagittarius";
-        }
-    } else if (birthdate.getMonth() == 11) {
-        if (birthdate.getDate() <= 21) {
-            return "Sagittarius";
-        } else {
-            return "Capricorn";
-        }
-    }
-}
-
 
 export default PlayerDetail;

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import GameElement from './GameElement';
 import { useGames } from '../../hooks/useGames';
+import ErrorMessage from '../UI/ErrorMessage';
 
 function GamesList() {
-    const { data: games, error } = useGames();
+    const { data: games, isLoading, error } = useGames();
     const [filteredGames, setFilteredGames] = useState([]);
     const [activeFilter, setActiveFilter] = useState('all');
 
@@ -35,14 +36,14 @@ function GamesList() {
         setActiveFilter('upcoming');
     }
 
+    if (isLoading) {
+        return (
+            <Loading />
+        )
+    }
 
     if (error) {
-        return (
-            <div className='text-center mt-5'>
-                <h3>Error loading games</h3>
-                <p className='text-muted'>{error.message}</p>
-            </div>
-        );
+        return <ErrorMessage message={error.message} title='Error Loading Games...' />
     }
 
     return (

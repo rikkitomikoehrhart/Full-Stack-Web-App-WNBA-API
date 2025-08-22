@@ -1,31 +1,20 @@
-import { useState, useEffect } from 'react';
 import Loading from '../UI/Loading';
 import NewsCard from './NewsCard';
-
+import { useNews } from '../../hooks/useNews';
+import ErrorMessage from '../UI/ErrorMessage';
 
 
 function NewsList() {
-    const [news, setNews] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        fetch("http://localhost:8080/api/news")
-            .then(res => res.json())
-            .then(data => {
-                setNews(data);
-                setIsLoading(false);
-            })
-            .catch(err => {
-                console.error("Error: ", err);
-                setIsLoading(false);
-            });
-    }, []);
-
+    const { data: news = [], isLoading, error } = useNews();
 
     if (isLoading) {
         return (
             <Loading />
         )
+    }
+
+    if (error) {
+        return <ErrorMessage message={error.message} title="Error Loading News..."/>
     }
 
 
@@ -34,7 +23,7 @@ function NewsList() {
         <>
             <div className="container">
                 {news.map(article => (
-                    <NewsCard article={article} />
+                    <NewsCard key={article.id} article={article} />
                 ))}
             </div>
         </>
