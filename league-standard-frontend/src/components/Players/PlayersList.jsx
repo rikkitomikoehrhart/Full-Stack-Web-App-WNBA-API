@@ -18,7 +18,7 @@ function PlayersList() {
         <>
             <div className='container text-center'>
                 <div className='row g-3'>
-                    <ListElement players={players} displayHeaders={true} />
+                    <ListElement key="players list" players={players} displayHeaders={true} />
                 </div>
             </div>
         </>

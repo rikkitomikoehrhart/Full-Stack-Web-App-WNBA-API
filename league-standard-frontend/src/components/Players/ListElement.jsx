@@ -1,11 +1,20 @@
 import { useFavorites } from '../Context/FavoritesContext.jsx';
 import { generatePlayerHeadshotPath } from "../Utilities/playerUtils.jsx";
-import { useTeamColors } from '../Context/TeamColorsContext.jsx';
+import { useTeamColors } from '../../hooks/useTeamColors.js';
 
 
 function ListElement( { players = [], displayHeaders = false } ) {
-    const { teamColors } = useTeamColors();
+    const { data: teamColors =[], error } = useTeamColors();
     const { favoritePlayerIDs, togglePlayerFavorite } = useFavorites();
+
+    if (error) {
+        return (
+            <div className='text-center mt-4'>
+                <p className='text-muted'>Error loading team colors</p>
+            </div>
+        )
+    }
+
 
     return (
         <>
@@ -21,7 +30,7 @@ function ListElement( { players = [], displayHeaders = false } ) {
                                 <hr/>
                             </div>
                         )}
-                        <div className='col-lg-4 col-md-6 col-sm-12'>
+                        <div key={player.id} className='col-lg-4 col-md-6 col-sm-12'>
                                 <div className='card shadow-sm h-100'>
 
                                     <div className='mt-auto'>

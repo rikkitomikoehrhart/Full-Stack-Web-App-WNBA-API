@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useTeamByID } from "../../hooks/useTeams.js";
-import { useTeamColors } from '../Context/TeamColorsContext.jsx';
+import { useTeamColors } from "../../hooks/useTeamColors.js";
 import ListElement from "../Players/ListElement.jsx";
 import GameElement from "../Games/GameElement.jsx";
 import { usePlayersByTeam } from "../../hooks/usePlayers.js";
@@ -11,7 +11,7 @@ function TeamDetail() {
     const { data: team, error: teamsError } = useTeamByID(id);
     const { data: players, error: playersError } = usePlayersByTeam(id);
     const { data: game, error: gameError } = useNextGameByTeam(id);
-    const { teamColors } = useTeamColors();
+    const { data: teamColors, colorError } = useTeamColors();
 
 
     if (!team) {
@@ -37,6 +37,9 @@ function TeamDetail() {
     if (playersError) {
         console.log(players);
         console.log("Error loading players: ", playersError);
+    }
+    if (colorError) {
+        console.log("Error loading team colors: ", colorError)
     }
 
 
