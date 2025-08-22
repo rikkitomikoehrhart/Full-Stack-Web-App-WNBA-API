@@ -3,8 +3,8 @@ import GameElement from './GameElement';
 import { useGames } from '../../hooks/useGames';
 
 function GamesList() {
-    const { data: games = [], error } = useGames();
-    const [allGames = games, setAllGames] = useState([]);
+    const { data: games, error } = useGames();
+    const [allGames, setAllGames] = useState(games);
 
 
     function showAllGames() {
@@ -12,7 +12,7 @@ function GamesList() {
     }
 
     function showUpcomingGames() {
-        const upcoming = games.filter(game => new Date(game.scheduled) > new Date());
+        const upcoming = games.filter(game => new Date(game.scheduled) >= new Date());
         setAllGames(upcoming);
     }
 
@@ -31,9 +31,9 @@ function GamesList() {
                 <button type="button" className='mt-4 ms-5 mb-0 btn btn-outline-success' onClick={showAllGames}>All Games</button>
                 <button type="button" className='mt-4 ms-2 mb-0 btn btn-outline-success' onClick={showUpcomingGames}>Upcoming Games</button>
                
-                {allGames.map(game => ( 
+                {allGames?.map(game => ( 
                     <GameElement game={game} />
-                ))}
+                )) || []}
             </div>
         </>
     );
