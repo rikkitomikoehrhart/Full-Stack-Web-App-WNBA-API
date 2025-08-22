@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useNewsByID } from '../../hooks/useNews.js';
 import ErrorMessage from '../UI/ErrorMessage.jsx';
 import Loading from "../UI/Loading";
-import { getFormattedDateTime } from "../Utilities/playerUtils.jsx";
+import { getFormattedDateTime } from "../../utils/dateUtils.js";
 import Gallery from "../UI/Elements/Gallery.jsx";
 
 function NewsDetail() {

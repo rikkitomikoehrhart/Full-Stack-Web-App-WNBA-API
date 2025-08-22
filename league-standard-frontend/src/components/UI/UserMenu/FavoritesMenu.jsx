@@ -1,5 +1,5 @@
 import { useFavorites } from '../../Context/FavoritesContext';
-import { generatePlayerHeadshotPath } from '../../Utilities/playerUtils';
+import { generatePlayerHeadshotPath } from '../../../utils/playerUtils';
 import { DEFAULT_IMAGE_PATHS } from '../../../constants/ui';
 import { ROUTES } from '../../../constants/routes';
 

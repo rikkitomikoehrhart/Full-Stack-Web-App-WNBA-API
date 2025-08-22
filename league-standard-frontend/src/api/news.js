@@ -11,7 +11,7 @@ export const newsAPI = {
         return response.json()
     },
     getNewsByID: async (id) => {
-        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.news}${id}`);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.news}/${id}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch news article: ${id}`);
         }

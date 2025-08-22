@@ -1,5 +1,4 @@
 import { API_BASE_URL, API_ENDPOINTS } from "../constants/api";
-const BASE_URL = 'http://localhost:8080/api';
 
 export const teamsAPI = {
     getTeams: async () => {
