@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect } from "react";
 const BookmarksContext = createContext();
+import { API_BASE_URL, API_ENDPOINTS } from "../../constants/api";
 
 export const useBookmarks = () => {
     const context = useContext(BookmarksContext);
@@ -18,7 +19,7 @@ export const BookmarksProvider = ({ children }) => {
 
     const fetchBookmarks = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/bookmarks");
+            const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.bookmarks}`);
             const jsonResponse = await response.json();
 
             setBookmarks(jsonResponse);
@@ -33,9 +34,9 @@ export const BookmarksProvider = ({ children }) => {
 
         try {
             if (isBookmarked) {
-                await fetch(`http://localhost:8080/api/bookmarks/news/${id}`, { method: "DELETE" });
+                await fetch(`${API_BASE_URL}${API_ENDPOINTS.bookmarks}/news/${id}`, { method: "DELETE" });
             } else {
-                await fetch(`http://localhost:8080/api/bookmarks/news/${id}`, { method: "POST" });
+                await fetch(`${API_BASE_URL}${API_ENDPOINTS.bookmarks}/news/${id}`, { method: "POST" });
             }
 
             await fetchBookmarks();
@@ -50,9 +51,9 @@ export const BookmarksProvider = ({ children }) => {
 
         try {
             if (isBookmarked) {
-                await fetch(`http://localhost:8080/api/bookmarks/games/${id}`, { method: "DELETE" });
+                await fetch(`${API_BASE_URL}${API_ENDPOINTS.bookmarks}/games/${id}`, { method: "DELETE" });
             } else {
-                await fetch(`http://localhost:8080/api/bookmarks/games/${id}`, { method: "POST" });
+                await fetch(`${API_BASE_URL}${API_ENDPOINTS.bookmarks}/games/${id}`, { method: "POST" });
             }
 
             await fetchBookmarks();

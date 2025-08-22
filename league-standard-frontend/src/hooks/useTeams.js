@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { teamsAPI } from "../api/teams";
+import { CACHE_TIMES } from "../constants/cache";
 
 export const teamsKeys = {
     all: ['teams'],
@@ -13,7 +14,7 @@ export const useTeams = () => {
     return useQuery({
         queryKey: teamsKeys.lists(),
         queryFn: teamsAPI.getTeams,
-        staleTime: 24 * 60 * 60 * 1000
+        staleTime: CACHE_TIMES.ONE_DAY
     });
 };
 

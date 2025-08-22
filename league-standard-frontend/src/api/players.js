@@ -1,8 +1,9 @@
-const API_BASE_URL = 'http://localhost:8080/api';
+import { API_BASE_URL,API_ENDPOINTS } from "../constants/api";
+
 
 export const playersAPI = {
     getPlayers: async () => {
-        const response = await fetch(`${API_BASE_URL}/players`);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.players}`);
         if (!response.ok) {
             throw new Error("Failed to fetch players");
         }
@@ -17,7 +18,7 @@ export const playersAPI = {
         });
     },
     getPlayer: async (playerID) => {
-        const response = await fetch(`${API_BASE_URL}/players/${playerID}`);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.players}/${playerID}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch player ${playerID}`)
         }
@@ -25,7 +26,7 @@ export const playersAPI = {
         return response.json();
     },
     getPlayersByTeam: async (teamID) => {
-        const response = await fetch(`${API_BASE_URL}/players/team/${teamID}`);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.players}/team/${teamID}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch players for team ${teamID}`);
         }

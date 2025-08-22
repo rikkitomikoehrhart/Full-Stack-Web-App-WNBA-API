@@ -1,6 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect } from "react";
+import { API_BASE_URL, API_ENDPOINTS } from "../../constants/api";
+
 const FavoritesContext = createContext();
+
 
 export const useFavorites = () => {
     const context = useContext(FavoritesContext);
@@ -19,12 +22,12 @@ export const FavoritesProvider = ({ children }) => {
 
     const fetchFavorites = async () => {
         try {
-            const teamsResponse = await fetch("http://localhost:8080/api/favorites/teams");
+            const teamsResponse = await fetch(`${API_BASE_URL}${API_ENDPOINTS.favorites}/teams`);
             const teamFavorites = await teamsResponse.json();
             setFavoriteTeams(teamFavorites);
             setFavoriteTeamIDs(new Set(teamFavorites.map(fav => fav.team.id)));
 
-            const playersResponse = await fetch("http://localhost:8080/api/favorites/players");
+            const playersResponse = await fetch(`${API_BASE_URL}${API_ENDPOINTS.favorites}/players`);
             const playerFavorites = await playersResponse.json();
             setFavoritePlayers(playerFavorites);
             setFavoritePlayerIDs(new Set(playerFavorites.map(fav => fav.player.id)));
@@ -38,9 +41,9 @@ export const FavoritesProvider = ({ children }) => {
 
         try {
             if (isFavorite) {
-                await fetch(`http://localhost:8080/api/favorites/teams/${teamID}`, { method: "DELETE" });
+                await fetch(`${API_BASE_URL}${API_ENDPOINTS.favorites}/teams/${teamID}`, { method: "DELETE" });
             } else {
-                await fetch(`http://localhost:8080/api/favorites/teams/${teamID}`, { method: "POST" });
+                await fetch(`${API_BASE_URL}${API_ENDPOINTS.favorites}/teams/${teamID}`, { method: "POST" });
             }
 
             await fetchFavorites();
@@ -54,9 +57,9 @@ export const FavoritesProvider = ({ children }) => {
 
         try {
             if (isFavorite) {
-                await fetch(`http://localhost:8080/api/favorites/players/${playerID}`, { method: "DELETE" });
+                await fetch(`${API_BASE_URL}${API_ENDPOINTS.favorites}/players/${playerID}`, { method: "DELETE" });
             } else {
-                await fetch(`http://localhost:8080/api/favorites/players/${playerID}`, { method: "POST" });
+                await fetch(`${API_BASE_URL}${API_ENDPOINTS.favorites}/players/${playerID}`, { method: "POST" });
             }
 
             await fetchFavorites();

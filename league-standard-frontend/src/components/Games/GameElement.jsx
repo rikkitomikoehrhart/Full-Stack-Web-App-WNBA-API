@@ -1,5 +1,6 @@
 import { useBookmarks } from "../Context/BookmarksContext";
 import ErrorMessage from "../UI/ErrorMessage";
+import { DEFAULT_IMAGE_PATHS } from "../../constants/ui";
 
 function GameElement({ game }) {
     const { bookmarks, toggleGameBookmark } = useBookmarks();
@@ -51,9 +52,9 @@ function GameElement({ game }) {
                         </div>
 
                         <div className='row'>
-                            <div className='col'><a href={`/teams/${game.homeTeam.id}`}><img className="game-logo-team" src={`/team-logos/${(game.homeTeam.name).toLowerCase()}.svg`} alt={`${game.homeTeam.market} ${game.homeTeam.name} Logo`} /></a></div>
+                            <div className='col'><a href={`/teams/${game.homeTeam.id}`}><img className="game-logo-team" src={`${DEFAULT_IMAGE_PATHS.TEAM_LOGOS}/${(game.homeTeam.name).toLowerCase()}.svg`} alt={`${game.homeTeam.market} ${game.homeTeam.name} Logo`} /></a></div>
                             <div className='col'><h3>vs.</h3></div>
-                            <div className='col'><a href={`/teams/${game.awayTeam.id}`}><img className="game-logo-team" src={`/team-logos/${(game.awayTeam.name).toLowerCase()}.svg`} alt={`${game.awayTeam.market} ${game.awayTeam.name} Logo`} /></a></div>
+                            <div className='col'><a href={`/teams/${game.awayTeam.id}`}><img className="game-logo-team" src={`${DEFAULT_IMAGE_PATHS.TEAM_LOGOS}/${(game.awayTeam.name).toLowerCase()}.svg`} alt={`${game.awayTeam.market} ${game.awayTeam.name} Logo`} /></a></div>
                         </div>
 
                         <div className='row'>

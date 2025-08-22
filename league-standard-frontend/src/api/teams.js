@@ -1,8 +1,9 @@
-const API_BASE_URL = 'http://localhost:8080/api';
+import { API_BASE_URL, API_ENDPOINTS } from "../constants/api";
+const BASE_URL = 'http://localhost:8080/api';
 
 export const teamsAPI = {
     getTeams: async () => {
-        const response = await fetch(`${API_BASE_URL}/teams`);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.teams}`);
         if (!response.ok) {
             throw new Error("Failed to fetch teams");
         }
@@ -10,7 +11,7 @@ export const teamsAPI = {
         return response.json();
     },
     getTeamsByID: async (id) => {
-        const response = await fetch(`${API_BASE_URL}/teams/${id}`);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.teams}/${id}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch team ${id}`);
         }

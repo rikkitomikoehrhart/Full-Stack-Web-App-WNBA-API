@@ -1,6 +1,7 @@
 import Loading from '../UI/Loading';
 import { useStandings } from '../../hooks/useStandings';
 import ErrorMessage from '../UI/ErrorMessage';
+import { DEFAULT_IMAGE_PATHS } from '../../constants/ui';
 
 function Standings() {
     const { data: teamStanding = [], isLoading, error } = useStandings();
@@ -36,7 +37,7 @@ function Standings() {
                         {teamStanding.map(standing => (
                             <tr key={standing.id}>
                                 <td>{standing.league_rank}</td>
-                                <td><a href={`/teams/${standing.team.id}`}><img className="standing-logo-team" src={`./team-logos/${(standing.team.name).toLowerCase()}.svg`} alt={`${standing.team.market} ${standing.team.name} Logo`} /></a></td>
+                                <td><a href={`/teams/${standing.team.id}`}><img className="standing-logo-team" src={`.${DEFAULT_IMAGE_PATHS.TEAM_LOGOS}/${(standing.team.name).toLowerCase()}.svg`} alt={`${standing.team.market} ${standing.team.name} Logo`} /></a></td>
                                 <td><a href={`/teams/${standing.team.id}`}>{standing.team.market} {standing.team.name}</a></td>
                                 <td>{standing.wins}</td>
                                 <td>{standing.losses}</td>

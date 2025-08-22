@@ -9,6 +9,7 @@ import PlayerDetail from './components/Players/PlayerDetail';
 import TeamDetail from './components/Teams/TeamDetail';
 import NewsList from './components/News/NewsList';
 import NewsDetail from './components/News/NewsDetail';
+import { ROUTES } from './constants/routes';
 
 function MainSection() {
     
@@ -26,14 +27,14 @@ function MainSection() {
                         <BrowserRouter>
                             <div id="routerTarget">
                                 <Routes>
-                                    <Route path="/" element={<NewsList />} />
-                                    <Route path="/news/:id" element={<NewsDetail />} />
-                                    <Route path="/standings" element={<Standings />} />
-                                    <Route path="/games" element={<GamesList />} />
-                                    <Route path="/teams" element={<TeamsList />} />
-                                    <Route path="/teams/:id" element={<TeamDetail />} />
-                                    <Route path="/players" element={<PlayersList />} />
-                                    <Route path="/players/:id" element={<PlayerDetail />}/>
+                                    <Route path={`${ROUTES.HOME}`} element={<NewsList />} />
+                                    <Route path={`${ROUTES.NEWS_DETAIL}`} element={<NewsDetail />} />
+                                    <Route path={`${ROUTES.STANDINGS}`} element={<Standings />} />
+                                    <Route path={`${ROUTES.GAMES}`} element={<GamesList />} />
+                                    <Route path={`${ROUTES.TEAMS}`} element={<TeamsList />} />
+                                    <Route path={`${ROUTES.TEAMS_DETAIL}`} element={<TeamDetail />} />
+                                    <Route path={`${ROUTES.PLAYERS}`} element={<PlayersList />} />
+                                    <Route path={`${ROUTES.PLAYER_DETAIL}`} element={<PlayerDetail />}/>
                                 </Routes>
                             </div>
                         </BrowserRouter>

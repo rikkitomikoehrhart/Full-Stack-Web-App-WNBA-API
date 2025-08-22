@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import GameElement from './GameElement';
 import { useGames } from '../../hooks/useGames';
 import ErrorMessage from '../UI/ErrorMessage';
+import Loading from '../UI/Loading';
 
 function GamesList() {
     const { data: games, isLoading, error } = useGames();

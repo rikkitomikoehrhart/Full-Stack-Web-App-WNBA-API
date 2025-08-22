@@ -1,13 +1,14 @@
+import { CACHE_TIMES } from '../constants/cache';
 import { QueryClient } from '@tanstack/react-query';
 
-const ONE_DAY = 24 * 60 * 60 * 1000;
+
 
 
 export const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
-            staleTime: 30 * 1000,
-            gcTime: 30 * 1000,
+            staleTime: CACHE_TIMES.ONE_DAY,
+            gcTime: CACHE_TIMES.FIVE_MINS,
             retry: 2,
             refetchOnWindowFocus: false,
         },

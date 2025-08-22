@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { playersAPI } from "../api/players";
+import { CACHE_TIMES } from "../constants/cache";
 
 export const playersKeys = {
     all: ['players'],
@@ -14,7 +15,7 @@ export const usePlayers = () => {
     return useQuery({
         queryKey: playersKeys.lists(),
         queryFn: playersAPI.getPlayers,
-        staleTime: 24 * 60 * 60 * 1000
+        staleTime: CACHE_TIMES.ONE_DAY
     });
 };
 

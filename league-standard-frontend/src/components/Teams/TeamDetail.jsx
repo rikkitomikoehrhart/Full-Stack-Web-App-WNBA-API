@@ -6,6 +6,8 @@ import GameElement from "../Games/GameElement.jsx";
 import { usePlayersByTeam } from "../../hooks/usePlayers.js";
 import { useNextGameByTeam } from "../../hooks/useGames.js";
 import ErrorMessage from "../UI/ErrorMessage.jsx";
+import Loading from '../UI/Loading';
+import { DEFAULT_IMAGE_PATHS } from "../../constants/ui.js";
 
 function TeamDetail() {
     const { id } = useParams();
@@ -52,7 +54,7 @@ function TeamDetail() {
                         <div style={{ overflow: "hidden", borderRadius: "5px",
                             backgroundImage: `linear-gradient(0deg, ${(teamColors.find((color) => color.teamID == team.id && color.colorType == "secondary")?.hexCode || "#ccc")} 15%, #ffffff 25%`}} 
                             className="shadow-sm">
-                            <img src={`/team-logos/${(team.name).toLowerCase()}.svg`} className='large-logo mt-2 pr-4 pl-4' alt={`${team.market} ${team.name} Logo`}/>
+                            <img src={`${DEFAULT_IMAGE_PATHS.TEAM_LOGOS}/${(team.name).toLowerCase()}.svg`} className='large-logo mt-2 pr-4 pl-4' alt={`${team.market} ${team.name} Logo`}/>
                         </div>
                     </div>
                     <div className="col-md-6 col-sm-12">

@@ -2,6 +2,7 @@ import { useFavorites } from '../Context/FavoritesContext.jsx';
 import { generatePlayerHeadshotPath } from "../Utilities/playerUtils.jsx";
 import { useTeamColors } from '../../hooks/useTeamColors.js';
 import ErrorMessage from '../UI/ErrorMessage';
+import Loading from '../UI/Loading';
 
 function ListElement( { players = [], displayHeaders = false } ) {
     const { data: teamColors =[], isLoading, error } = useTeamColors();

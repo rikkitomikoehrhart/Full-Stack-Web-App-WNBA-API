@@ -1,5 +1,6 @@
 import { useBookmarks } from "../../Context/BookmarksContext";
-
+import { BREAKPOINT_HEADLINE_TRUNCATE } from "../../../constants/ui";
+import { ROUTES } from "../../../constants/routes";
 
 function BookmarksMenu() {
     const { bookmarks } = useBookmarks();
@@ -28,20 +29,20 @@ function BookmarksMenu() {
 
 function getFormattedBookmark(bookmark) {
     if (bookmark.news) {
-        if (bookmark.news.headline <= 25) {
+        if (bookmark.news.headline <= BREAKPOINT_HEADLINE_TRUNCATE) {
             return (
                 <li key={bookmark.id} className="list-group-item">
-                    <a href={`/news/${bookmark.news.id}`}>
+                    <a href={`${ROUTES.NEWS}/${bookmark.news.id}`}>
                         {bookmark.news.headline}
                     </a>
                 </li>
 
             );
         } else {
-            let headline = (bookmark.news.headline).slice(0, 25) + "...";
+            let headline = (bookmark.news.headline).slice(0, BREAKPOINT_HEADLINE_TRUNCATE) + "...";
             return (
                 <li key={bookmark.id} className="list-group-item">
-                    <a href={`/news/${bookmark.news.id}`}>
+                    <a href={`${ROUTES.NEWS}/${bookmark.news.id}`}>
                         {headline}
                     </a>
                 </li>
@@ -56,7 +57,7 @@ function getFormattedBookmark(bookmark) {
         })
         return (
             <li key={bookmark.id} className="list-group-item">
-                <a href={`/games/${bookmark.game.id}`}>
+                <a href={`${ROUTES.GAMES}/${bookmark.game.id}`}>
                     {gameDate + " | " + bookmark.game.homeTeam.alias + " v. " + bookmark.game.awayTeam.alias}
                 </a>
             </li>

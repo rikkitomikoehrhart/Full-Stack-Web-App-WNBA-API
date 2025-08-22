@@ -1,5 +1,7 @@
 import { useFavorites } from '../../Context/FavoritesContext';
 import { generatePlayerHeadshotPath } from '../../Utilities/playerUtils';
+import { DEFAULT_IMAGE_PATHS } from '../../../constants/ui';
+import { ROUTES } from '../../../constants/routes';
 
 function FavoritesMenu() {
     const { favoriteTeams, favoritePlayers } = useFavorites();
@@ -15,8 +17,8 @@ function FavoritesMenu() {
                         <ul className="list-group list-group-flush">
                             {favoriteTeams.map(favorite => (
                                 <li key={favorite.team.id} className='list-group-item text-muted'>
-                                    <a href={`/teams/${favorite.team.id}`} className='text-end'>
-                                        <img className="logo-favorite" src={`/team-logos/${(favorite.team.name).toLowerCase()}.svg`} alt={`${favorite.team.market} ${favorite.team.name} Logo`} />
+                                    <a href={`${ROUTES.TEAMS}/${favorite.team.id}`} className='text-end'>
+                                        <img className="logo-favorite" src={`${DEFAULT_IMAGE_PATHS.TEAM_LOGOS}/${(favorite.team.name).toLowerCase()}.svg`} alt={`${favorite.team.market} ${favorite.team.name} Logo`} />
                                         {(favorite.team.market).toUpperCase()} {(favorite.team.name).toUpperCase()}
                                     </a>
                                 
@@ -31,7 +33,7 @@ function FavoritesMenu() {
                         <ul className="list-group list-group-flush">
                             {favoritePlayers.map(favorite => (
                                 <li key={favorite.player.id} className='list-group-item text-muted'>
-                                    <a href={`/players/${favorite.player.id}`}>
+                                    <a href={`${ROUTES.PLAYERS}/${favorite.player.id}`}>
                                         <img className="logo-favorite" src={generatePlayerHeadshotPath(favorite.player)} alt={`${favorite.player.first_name} ${favorite.player.last_name}`} />
                                         {(favorite.player.first_name).toUpperCase()} {(favorite.player.last_name).toUpperCase()}
                                     </a>

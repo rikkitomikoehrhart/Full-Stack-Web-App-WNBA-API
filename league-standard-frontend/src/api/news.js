@@ -1,8 +1,9 @@
-const API_BASE_URL = 'http://localhost:8080/api/news';
+import { API_BASE_URL, API_ENDPOINTS } from "../constants/api";
+
 
 export const newsAPI = {
     getNews: async () => {
-        const response = await fetch(API_BASE_URL);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.news}`);
         if (!response.ok) {
             throw new Error("Failed to fetch news");
         }
@@ -10,7 +11,7 @@ export const newsAPI = {
         return response.json()
     },
     getNewsByID: async (id) => {
-        const response = await fetch(`${API_BASE_URL}/${id}`);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.news}${id}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch news article: ${id}`);
         }

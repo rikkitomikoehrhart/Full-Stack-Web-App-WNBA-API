@@ -1,8 +1,8 @@
-const API_BASE_URL = 'http://localhost:8080/api';
+import { API_BASE_URL, API_ENDPOINTS } from "../constants/api";
 
 export const gamesAPI = {
     getGames: async () => {
-        const response = await fetch(`${API_BASE_URL}/games`);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.games}`);
         if (!response.ok) {
             throw new Error("Failed to fetch games");
         }
@@ -18,7 +18,7 @@ export const gamesAPI = {
         return sortedGames;
     },
     getNextTeamGame: async (id) => {
-        const response = await fetch(`${API_BASE_URL}/games/next/${id}`);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.games}/next/${id}`);
         if (!response.ok) {
             throw new Error ("Failed to fetch next game");
         }

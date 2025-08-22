@@ -1,6 +1,7 @@
 import { usePlayers } from '../../hooks/usePlayers.js';
 import ListElement from './ListElement.jsx';
 import ErrorMessage from '../UI/ErrorMessage';
+import Loading from '../UI/Loading';
 
 function PlayersList() {
     const { data: players, isLoading, error } = usePlayers();

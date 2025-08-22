@@ -1,8 +1,8 @@
-const API_BASE_URL = 'http://localhost:8080/api/standings';
+import { API_BASE_URL, API_ENDPOINTS } from "../constants/api";
 
 export const standingsAPI = {
     getStandings: async () => {
-        const response = await fetch(API_BASE_URL);
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.standings}`);
         if (!response.ok) {
             throw new Error("Failed to fetch standings");
         }

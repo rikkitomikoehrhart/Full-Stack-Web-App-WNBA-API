@@ -3,6 +3,7 @@ import { usePlayer } from "../../hooks/usePlayers.js";
 import { generatePlayerHeadshotPath, getFormattedDate, getFormattedHeight, getFormattedAge, getZodiacSign } from "../Utilities/playerUtils.jsx";
 import { useTeamColors } from "../../hooks/useTeamColors.js";
 import ErrorMessage from '../UI/ErrorMessage';
+import Loading from '../UI/Loading';
 
 
 function PlayerDetail() {

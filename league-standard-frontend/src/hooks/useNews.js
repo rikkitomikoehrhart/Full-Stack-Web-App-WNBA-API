@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { newsAPI } from '../api/news';
+import { CACHE_TIMES } from '../constants/cache';
 
 export const newsKeys = {
     all: ['news'],
@@ -12,7 +13,7 @@ export const useNews = () => {
     return useQuery({
         queryKey: newsKeys.lists(),
         queryFn: newsAPI.getNews,
-        staleTime: 24 * 60 * 60 * 1000,
+        staleTime: CACHE_TIMES.ONE_DAY,
     });
 };
 

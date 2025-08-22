@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { gamesAPI } from "../api/games";
+import { CACHE_TIMES } from "../constants/cache";
 
 
 
@@ -15,7 +16,7 @@ export const useGames = () => {
     return useQuery({
         queryKey: gamesKeys.lists(),
         queryFn: gamesAPI.getGames,
-        staleTime: 24 * 60 * 60 * 1000,
+        staleTime: CACHE_TIMES.ONE_DAY,
     });
 };
 
