@@ -50,7 +50,7 @@ function getFormattedBookmark(bookmark) {
             );
         }
     } else {
-        const gameDate = new Date(bookmark.game.scheduled + 'T12:00:00').toLocaleDateString('en-US', {
+        const gameDate = new Date(bookmark.game.scheduled).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'short',
             day: 'numeric'

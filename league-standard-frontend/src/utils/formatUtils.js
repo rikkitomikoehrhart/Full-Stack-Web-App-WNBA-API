@@ -6,11 +6,8 @@ export function getFormattedHeight(height) {
 };
 
 export function sanitizeName(name) {
-    return name.toLowerCase()
-               .normalize("NFD")
-               .replace(/[\u0300-\u036f]/g, "")
-               .replace(/[^a-z0-9]/g, "");
-};
+    return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+}
 
 export function truncateText(text, maxLength, suffix = "...") {
     if (text.length <= maxLength) return text;

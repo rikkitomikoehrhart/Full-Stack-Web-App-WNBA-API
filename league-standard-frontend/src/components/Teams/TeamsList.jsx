@@ -2,7 +2,8 @@ import { useFavorites } from '../Context/FavoritesContext';
 import { useTeams } from '../../hooks/useTeams';
 import ErrorMessage from '../UI/ErrorMessage';
 import Loading from '../UI/Loading';
-import { DEFAULT_IMAGE_PATHS } from '../../constants/ui';
+import { ROUTES } from '../../constants/routes';
+import TeamLogo from '../UI/TeamLogo';
 
 function TeamsList() {
     const { data: teams = [], isLoading, error } = useTeams();
@@ -45,9 +46,9 @@ function TeamsList() {
                                 
                                 
                                 <div className='card-body d-flex flex-column'>
-                                    <a href={`/teams/${team.id}`}>
+                                    <a href={`${ROUTES.TEAMS}/${team.id}`}>
                                         <p className='card-text text-muted small'>{team.market}</p> 
-                                        <img className="logo-team" src={`.${DEFAULT_IMAGE_PATHS.TEAM_LOGOS}/${(team.name).toLowerCase()}.svg`} alt={`${team.market} ${team.name} Logo`} />
+                                        <TeamLogo team={team} size='medium' className='' showLink={false} />
                                         <p className='card-text'>{team.name}</p>
                                     </a>
                                     
