@@ -98,6 +98,14 @@ td {
     border: none;
 }
 
+.pagination-text {
+    font-size: .85rem;
+}
+
+.tab {
+    margin-left: 25px;
+}
+
 @media (min-width: 756px) {
     .game-logo-team {
         width: 100px;
