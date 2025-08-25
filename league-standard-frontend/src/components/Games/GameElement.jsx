@@ -19,7 +19,7 @@ function GameElement({ game }) {
 
     return(
         <>
-            <div key={game.id} className="mt-5 card text-center shadow-sm">
+            <div key={game.id} className="mt-4 card text-center shadow-sm">
                 <div className='card-header'>
                     {new Date(game.scheduled).toLocaleDateString('en-US', {
                         weekday: 'short',
