@@ -54,7 +54,16 @@ public class MySQLStandingsRepo implements StandingsRepo {
     public TeamStanding addTeamStanding(TeamStanding standing) {
         String sql = """
         INSERT INTO standings (team_id, wins, losses, win_pct, points_for, points_against, point_diff, league_rank)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        ON DUPLICATE KEY UPDATE
+            wins = VALUES(wins),
+            losses = VALUES(losses),
+            win_pct = VALUES(win_pct),
+            points_for = VALUES(points_for),
+            points_against = VALUES(points_against),
+            point_diff = VALUES(point_diff),
+            league_rank = VALUES(league_rank),
+            updated_at = CURRENT_TIMESTAMP
         """;
 
         try {

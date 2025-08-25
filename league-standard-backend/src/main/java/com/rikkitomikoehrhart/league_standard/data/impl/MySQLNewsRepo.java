@@ -44,24 +44,54 @@ public class MySQLNewsRepo implements NewsRepo {
 
     @Override
     public News addNews(News news) {
-        String sql = """
-        INSERT INTO news (headline, description, link, image_urls, published, categories)
-        VALUES (?, ?, ?, ?, ?, ?);
+        String checkSql = """
+        SELECT COUNT(*) FROM news WHERE link = ?
         """;
 
         try {
-            jdbcTemplate.update(sql,
-                    news.getHeadline(),
-                    news.getDescription(),
-                    news.getLink(),
-                    objectMapper.writeValueAsString(news.getImage_urls()),
-                    news.getPublished(),
-                    objectMapper.writeValueAsString(news.getCategories()));
+            int count = jdbcTemplate.queryForObject(checkSql, Integer.class, news.getLink());
+
+            if (count > 0) {
+                String updateSql = """
+                UPDATE news 
+                SET headline = ?, description = ?, image_urls = ?, published = ?, categories = ?, updated_at = CURRENT_TIMESTAMP
+                WHERE link = ?
+                """;
+
+                jdbcTemplate.update(updateSql,
+                        news.getHeadline(),
+                        news.getDescription(),
+                        objectMapper.writeValueAsString(news.getImage_urls()),
+                        news.getPublished(),
+                        objectMapper.writeValueAsString(news.getCategories()),
+                        news.getLink());
+
+                System.out.println("News article updated: " + news.getHeadline());
+            } else {
+                insertNewNews(news);
+            }
+
         } catch (Exception e) {
-            System.err.println("Error adding news item: " + e.getMessage());
+            System.err.println("Error saving/updating news item: " + e.getMessage());
         }
 
         return news;
+    }
+
+
+    private void insertNewNews(News news) throws Exception {
+        String insertSQL = """
+        INSERT INTO news (headline, description, link, image_urls, published, categories)
+        VALUES (?, ?, ?, ?, ?, ?)
+        """;
+
+        jdbcTemplate.update(insertSQL,
+                news.getHeadline(),
+                news.getDescription(),
+                news.getLink(),
+                objectMapper.writeValueAsString(news.getImage_urls()),
+                news.getPublished(),
+                objectMapper.writeValueAsString(news.getCategories()));
     }
 
     @Override

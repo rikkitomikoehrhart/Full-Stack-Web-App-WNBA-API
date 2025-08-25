@@ -79,17 +79,33 @@ public class MySQLGameRepo implements GameRepo {
         String sql = """
         INSERT INTO games (id, home_team_id, away_team_id, scheduled_date, status, home_score, away_score, season_year)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        ON DUPLICATE KEY UPDATE
+            home_team_id = VALUES(home_team_id),
+            away_team_id = VALUES(away_team_id),
+            scheduled_date = VALUES(scheduled_date),
+            status = VALUES(status),
+            home_score = VALUES(home_score),
+            away_score = VALUES(away_score),
+            season_year = VALUES(season_year),
+            updated_at = CURRENT_TIMESTAMP
         """;
 
-        jdbcTemplate.update(sql,
-                game.getId(),
-                game.getHomeTeamID(),
-                game.getAwayTeamID(),
-                game.getScheduled(),
-                game.getStatus(),
-                game.getHomeScore(),
-                game.getAwayScore(),
-                game.getSeasonYear());
+        try {
+            jdbcTemplate.update(sql,
+                    game.getId(),
+                    game.getHomeTeamID(),
+                    game.getAwayTeamID(),
+                    game.getScheduled(),
+                    game.getStatus(),
+                    game.getHomeScore(),
+                    game.getAwayScore(),
+                    game.getSeasonYear());
+        } catch (Exception e) {
+            System.err.println("Error saving/updating game: " + e.getMessage());
+        } finally {
+            jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 1");
+        }
+
         return game;
     }
 
