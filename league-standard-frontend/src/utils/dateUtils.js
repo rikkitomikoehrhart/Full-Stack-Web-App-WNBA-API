@@ -1,7 +1,7 @@
 export function getFormattedDate(dateString) {
     const date = new Date(dateString);
     const month = date.toLocaleDateString('default', { month: "short" });
-    return `${month} ${date.getDate()}, ${date.getFullYear}`;
+    return `${month} ${date.getDate()}, ${date.getFullYear()}`;
 }
 
 export function getFormattedDateTime(dateString) {
