@@ -7,12 +7,14 @@ import { getZodiacSign } from "../../utils/zodiacUtils.js";
 import { useTeamColors } from "../../hooks/useTeamColors.js";
 import ErrorMessage from '../UI/ErrorMessage';
 import Loading from '../UI/Loading';
+import { useFavorites } from '../Context/FavoritesContext.jsx';
 
 
 function PlayerDetail() {
     const { id } = useParams();
     const { data: player, error } = usePlayer(id);
     const { data: teamColors, isLoading, colorsError } = useTeamColors();
+    const { favoritePlayerIDs, togglePlayerFavorite } = useFavorites();
 
     if (isLoading) {
         return <Loading />
@@ -33,7 +35,20 @@ function PlayerDetail() {
 
     return (
         <>
-            <h2>{player.first_name} {player.last_name}</h2>
+            <h2 className="d-flex align-items-start justify-content-center gap-2">
+                <button className='btn btn-link p-0 border-0 flex-shrink-0' onClick={() => togglePlayerFavorite(player.id)} style={{ background: 'none', lineHeight: 1, marginTop: '6px' }}>
+                    {favoritePlayerIDs.has(player.id) ? (
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ff6b35" stroke="#000000ff" strokeWidth="2" >
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    ) : (
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff50" stroke="#636161ff" strokeWidth="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    )}
+                </button>
+                {player.first_name} {player.last_name}
+            </h2>
             <p className="text-muted">#{player.jersey_number} on the <a href={`/teams/${player.team.id}`}>{player.team.market} {player.team.name}</a>, Position: {player.position}</p>
 
             <div className="container mt-4">
