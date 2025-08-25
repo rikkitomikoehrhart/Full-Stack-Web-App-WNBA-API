@@ -23,7 +23,7 @@ a {
     font-family: "Liu Jian Mao Cao", cursive;
 }
 
-.logo-team {
+.logo-team, .player-icon {
     margin: auto;
     height: auto;
     width: 100px;
