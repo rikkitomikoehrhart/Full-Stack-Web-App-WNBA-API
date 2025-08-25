@@ -106,6 +106,41 @@ td {
     margin-left: 25px;
 }
 
+.pagination-success .page-link {
+    color: #198754;
+    /* Bootstrap success color */
+    background-color: transparent;
+    transition: all 0.15s ease-in-out;
+}
+
+.pagination-success .page-link:hover:not(.disabled) {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.pagination-success .page-item.active .page-link {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+    box-shadow: 0 0 0 0.125rem rgba(25, 135, 84, 0.25);
+}
+
+.pagination-success .page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #dee2e6;
+    opacity: 0.65;
+}
+
+.pagination-success .page-item.disabled .page-link:hover {
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+
+
 @media (min-width: 756px) {
     .game-logo-team {
         width: 100px;

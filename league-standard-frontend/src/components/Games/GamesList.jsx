@@ -152,8 +152,8 @@ function GamesList() {
 
                 {totalPages > 1 && (
                     <div className='container mt-4 mb-4'>
-                        <nav aria-label='Games Pagination'>
-                            <ul className='pagination justify-content-center'>
+                        <nav aria-label='Games pagination'>
+                            <ul className='pagination pagination-sm pagination-success justify-content-center'>
                                 <li className={`page-item ${currentPage == 1 ? 'disable' : ''}`}>
                                     <button className="page-link" onClick={goToPrevious} disabled={currentPage === 1}>
                                         &laquo; Previous
