@@ -17,33 +17,30 @@ function FavoritesMenu() {
                         <ul className="list-group list-group-flush">
                             {favoriteTeams.map(favorite => (
                                 <li key={favorite.team.id} className='list-group-item text-muted'>
-                                    <a href={`${ROUTES.TEAMS}/${favorite.team.id}`} className='text-end'>
+                                    <a href={`${ROUTES.TEAMS}/${favorite.team.id}`} className='d-flex justify-content-between align-items-center text-decoration-none p-2'>
                                         <img className="logo-favorite" src={`${DEFAULT_IMAGE_PATHS.TEAM_LOGOS}/${(favorite.team.name).toLowerCase()}.svg`} alt={`${favorite.team.market} ${favorite.team.name} Logo`} />
                                         {(favorite.team.market).toUpperCase()} {(favorite.team.name).toUpperCase()}
                                     </a>
-                                
                                 </li>
                             ))}
+                            {favoritePlayers.length > 0 ? (
+                                favoritePlayers.map(player => (
+                                    <li key={player.player.id} className='list-group-item text-muted'>
+                                        <a href={`${ROUTES.PLAYERS}/${player.player.id}`} className='d-flex justify-content-between align-items-center text-decoration-none p-2'>
+                                        <img className="logo-favorite" src={generatePlayerHeadshotPath(player.player)} alt={`${player.player.first_name} ${player.player.last_name}`} />
+                                        {(player.player.first_name).toUpperCase()} {(player.player.last_name).toUpperCase()}
+                                    </a>
+                                    </li>
+                                ))
+                            ) : (
+                                <p className="text-muted">No favorite players yet</p>
+                            )}
                         </ul>
                     ) : (
                         <p className="text-muted">No favorite teams yet</p>
                     )}
 
-                    {favoritePlayers.length > 0 ? (
-                        <ul className="list-group list-group-flush">
-                            {favoritePlayers.map(favorite => (
-                                <li key={favorite.player.id} className='list-group-item text-muted'>
-                                    <a href={`${ROUTES.PLAYERS}/${favorite.player.id}`}>
-                                        <img className="logo-favorite" src={generatePlayerHeadshotPath(favorite.player)} alt={`${favorite.player.first_name} ${favorite.player.last_name}`} />
-                                        {(favorite.player.first_name).toUpperCase()} {(favorite.player.last_name).toUpperCase()}
-                                    </a>
-                                
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p className="text-muted">No favorite players yet</p>
-                    )}
+                   
                 </div>
             </div>
         </>
