@@ -11,6 +11,4 @@ public interface TeamColorsRepo {
     public void updateTeamColors(TeamColors teamColors);
     public void deleteTeamColors(String id);
 
-    interface StandingsRepo {
-    }
 }

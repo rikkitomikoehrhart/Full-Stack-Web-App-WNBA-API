@@ -1,7 +1,7 @@
 import { useBookmarks } from "../Context/BookmarksContext";
 import ErrorMessage from "../UI/ErrorMessage";
-import { DEFAULT_IMAGE_PATHS } from "../../constants/ui";
 import TeamLogo from "../UI/TeamLogo";
+import { ROUTES } from "../../constants/routes";
 
 function GameElement({ game }) {
     const { bookmarks, toggleGameBookmark } = useBookmarks();
@@ -62,6 +62,10 @@ function GameElement({ game }) {
                             <div className='col'><h3>{game.homeScore == 0 ? "--" : game.homeScore}</h3></div>
                             <div className="col"></div>
                             <div className='col'><h3>{game.awayScore == 0 ? "--" : game.awayScore}</h3></div>
+                        </div>
+
+                        <div className="row">
+                            <a className="text-muted" href={`${ROUTES.GAMES}/${game.id}`}>See More...</a>
                         </div>
                     </div>
                 </div>

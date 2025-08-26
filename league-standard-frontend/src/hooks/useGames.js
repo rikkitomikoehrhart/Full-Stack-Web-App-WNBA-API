@@ -8,6 +8,8 @@ export const gamesKeys = {
     all: ['games'],
     lists: () => [...gamesKeys.all, 'list'],
     list: (filters) => [...gamesKeys.list(), { filters }],
+    details: () => [...gamesKeys.all, 'detail'],
+    detail: (id) => [...gamesKeys.details(), id],
     nextByTeam: (teamID) => [...gamesKeys.all, 'team', teamID],
 };
 
@@ -17,6 +19,14 @@ export const useGames = () => {
         queryKey: gamesKeys.lists(),
         queryFn: gamesAPI.getGames,
         staleTime: CACHE_TIMES.ONE_DAY,
+    });
+};
+
+export const useGame = (gameID) => {
+    return useQuery({
+        queryKey: gamesKeys.detail(gameID),
+        queryFn: () => gamesAPI.getGame(gameID),
+        enabled: !!gameID,
     });
 };
 

@@ -10,6 +10,7 @@ import TeamDetail from './components/Teams/TeamDetail';
 import NewsList from './components/News/NewsList';
 import NewsDetail from './components/News/NewsDetail';
 import { ROUTES } from './constants/routes';
+import GamesDetail from './components/Games/GamesDetail';
 
 function MainSection() {
     
@@ -31,6 +32,7 @@ function MainSection() {
                                     <Route path={`${ROUTES.NEWS_DETAIL}`} element={<NewsDetail />} />
                                     <Route path={`${ROUTES.STANDINGS}`} element={<Standings />} />
                                     <Route path={`${ROUTES.GAMES}`} element={<GamesList />} />
+                                    <Route path={`${ROUTES.GAMES_DETAIL}`} element={<GamesDetail />} />
                                     <Route path={`${ROUTES.TEAMS}`} element={<TeamsList />} />
                                     <Route path={`${ROUTES.TEAMS_DETAIL}`} element={<TeamDetail />} />
                                     <Route path={`${ROUTES.PLAYERS}`} element={<PlayersList />} />
