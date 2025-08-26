@@ -11,7 +11,7 @@ function NewsCard({ article }) {
 
     return (
         <>
-            <div className="card m-4 shadow-sm" key={article.id}>
+            <div className="card mt-5 shadow-sm" key={article.id}>
 
                 <div className='mt-auto'>
                     <button className='btn btn-link p-0 border-0 position-absolute' onClick={() => toggleNewsBookmark(article.id)} style={{ background: 'none', top: '10px', left: '10px', zIndex: 1 }}>
