@@ -6,11 +6,11 @@ import ErrorMessage from '../UI/ErrorMessage';
 
 function NewsList() {
     const { data: news = [], isLoading, error } = useNews();
-    const [visibleCount, setVisibleCount] = useState(10);
+    const [visibleCount, setVisibleCount] = useState(5);
     const [searchValue, setSearchValue] = useState('');
     const [activeSearchTerm, setActiveSearchTerm] = useState(''); 
     const [isSearching, setIsSearching] = useState(false);
-    const ITEMS_PER_LOAD = 10;
+    const ITEMS_PER_LOAD = 5;
 
     if (isLoading) {
         return (
@@ -100,7 +100,7 @@ function NewsList() {
                 {hasMore && (
                     <div className='load-more-container' style={{ textAlign: 'center', margin: '2rem 0'}}>
                         <button type="button" onClick={loadMore} className='btn btn-outline-success'>
-                            Load More Articles ({filteredNews.length - visibleCount} remaining)
+                            Load More Articles
                         </button>
                     </div>
                 )}

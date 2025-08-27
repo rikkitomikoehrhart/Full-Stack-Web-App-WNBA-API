@@ -11,4 +11,6 @@ public interface GameRepo {
     public Game addGame(Game game);
     public void updateGame(Game game);
     public void deleteGame(String id);
+
+    public List<Game> getCompletedGames();
 }

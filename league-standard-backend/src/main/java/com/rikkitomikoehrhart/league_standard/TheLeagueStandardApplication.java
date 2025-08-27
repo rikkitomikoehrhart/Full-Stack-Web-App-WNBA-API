@@ -29,6 +29,9 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
     @Autowired
     private NewsDataService newsDataService;
 
+    @Autowired
+    private BoxscoreDataService boxscoreDataService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(TheLeagueStandardApplication.class, args);
 	}
@@ -49,5 +52,17 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
 
         // ADD/UPDATE NEWS
         // newsDataService.loadNewsData();
+
+        // ADD BOXSCORES FOR COMPLETED GAMES
+        // boxscoreDataService.loadAllGameBoxscores();
 	}
 }
+
+
+
+
+
+
+
+
+
