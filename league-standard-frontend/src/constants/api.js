@@ -3,6 +3,7 @@ export const API_BASE_URL = 'http://localhost:8080/api';
 export const API_ENDPOINTS = {
     teams: '/teams',
     players: '/players',
+    seasonStats: '/season-stats',
     games: '/games',
     boxscores: '/boxscores',
     standings: '/standings',

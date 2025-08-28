@@ -19,14 +19,14 @@ public class MySQLPlayerSeasonStatsRepo implements PlayerSeasonStatsRepo {
 
 
     @Override
-    public PlayerSeasonStats getPlayerSeasonStatsByID(int id) {
+    public PlayerSeasonStats getPlayerSeasonStatsByID(String id) {
         String sql = """
         SELECT * FROM player_season_stats
-        WHERE id = ?
+        WHERE player_id = ?
         """;
 
         try {
-            return jdbcTemplate.queryForObject(sql, mapper.playerSeasonStatsRowMapper(), String.valueOf(id));
+            return jdbcTemplate.queryForObject(sql, mapper.playerSeasonStatsRowMapper(), id);
         } catch (Exception e) {
             System.err.println("Player Season Stats not found with id: " + id);
             return null;

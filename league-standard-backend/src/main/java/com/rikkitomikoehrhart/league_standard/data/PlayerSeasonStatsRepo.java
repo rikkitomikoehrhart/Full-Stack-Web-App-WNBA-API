@@ -6,7 +6,7 @@ import com.rikkitomikoehrhart.league_standard.model.PlayerSeasonStats;
 import java.util.List;
 
 public interface PlayerSeasonStatsRepo {
-    public PlayerSeasonStats getPlayerSeasonStatsByID(int id);
+    public PlayerSeasonStats getPlayerSeasonStatsByID(String id);
     public List<PlayerSeasonStats> getAllPlayerSeasonStats();
     public PlayerSeasonStats addPlayerSeasonStats(PlayerSeasonStats stats);
     public void updatePlayerSeasonStats(PlayerSeasonStats stats);

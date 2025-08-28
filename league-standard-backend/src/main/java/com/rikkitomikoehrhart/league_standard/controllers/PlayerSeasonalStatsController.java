@@ -20,7 +20,7 @@ public class PlayerSeasonalStatsController {
     public List<PlayerSeasonStats> getAllPlayerSeasonalStats() { return playerSeasonStatsRepo.getAllPlayerSeasonStats(); };
 
     @GetMapping("/{id}")
-    public PlayerSeasonStats getPlayerSeasonStatsByID(@PathVariable int id) {
+    public PlayerSeasonStats getPlayerSeasonStatsByID(@PathVariable String id) {
         return playerSeasonStatsRepo.getPlayerSeasonStatsByID(id);
     }
 }

@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { boxscoresAPI } from "../api/boxscores";
-import { CACHE_TIMES } from "../constants/cache";
 
 
 export const boxscoresKeys = {

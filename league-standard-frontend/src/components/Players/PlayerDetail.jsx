@@ -8,11 +8,14 @@ import { useTeamColors } from "../../hooks/useTeamColors.js";
 import ErrorMessage from '../UI/ErrorMessage';
 import Loading from '../UI/Loading';
 import { useFavorites } from '../Context/FavoritesContext.jsx';
+import { useSeasonStatsByPlayer } from '../../hooks/useSeasonStats.js';
+import SeasonStatsTable from "./SeasonStatsTable.jsx";
 
 
 function PlayerDetail() {
     const { id } = useParams();
     const { data: player, error } = usePlayer(id);
+    const { data: stats, statsError } = useSeasonStatsByPlayer(id); 
     const { data: teamColors, isLoading, colorsError } = useTeamColors();
     const { favoritePlayerIDs, togglePlayerFavorite } = useFavorites();
 
@@ -27,6 +30,10 @@ function PlayerDetail() {
 
     if (colorsError) {
         return <ErrorMessage message={colorsError.message} title="Error Loading Team Colors..."/>
+    }
+
+    if (statsError) {
+        return <ErrorMessage message={statsError.message} title="Error Loading Season's Stats..." />
     }
 
     if (!player) {
@@ -104,6 +111,7 @@ function PlayerDetail() {
                 </div>
             </div>
             
+            <SeasonStatsTable stats={stats}/>
         </>
     );
 }
