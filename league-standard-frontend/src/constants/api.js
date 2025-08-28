@@ -4,6 +4,7 @@ export const API_ENDPOINTS = {
     teams: '/teams',
     players: '/players',
     games: '/games',
+    boxscores: '/boxscores',
     standings: '/standings',
     news: '/news',
     bookmarks: '/bookmarks',
