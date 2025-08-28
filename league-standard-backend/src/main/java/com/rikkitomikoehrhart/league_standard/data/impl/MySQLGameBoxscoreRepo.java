@@ -42,7 +42,7 @@ public class MySQLGameBoxscoreRepo implements GameBoxscoreRepo {
         """;
 
         try {
-            return jdbcTemplate.queryForObject(sql, mapper.gameBoxscoreRowMapper(), id);
+            return jdbcTemplate.queryForObject(sql, mapper.gameBoxscoreRowMapper(), String.valueOf(id));
         } catch (Exception e) {
             System.err.println("Boxscore not found with id: " + id);
             return null;
@@ -179,7 +179,7 @@ public class MySQLGameBoxscoreRepo implements GameBoxscoreRepo {
                     awayScoringJson,
                     homeTopPlayersJson,
                     awayTopPlayersJson,
-                    boxscore.getId());
+                    String.valueOf(boxscore.getId()));
         } catch (Exception e) {
             System.err.println("Error updating game boxscore: " + e.getMessage());
         }
@@ -190,7 +190,7 @@ public class MySQLGameBoxscoreRepo implements GameBoxscoreRepo {
         String sql = "DELETE FROM game_boxscores WHERE id = ?";
 
         try {
-            jdbcTemplate.update(sql, id);
+            jdbcTemplate.update(sql, String.valueOf(id));
         } catch (Exception e) {
             System.err.println("Error deleting game boxscore: " + e.getMessage());
         }

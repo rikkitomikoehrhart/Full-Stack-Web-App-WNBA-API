@@ -32,6 +32,9 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
     @Autowired
     private BoxscoreDataService boxscoreDataService;
 
+    @Autowired
+    private PlayerSeasonStatsService playerSeasonStatsService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(TheLeagueStandardApplication.class, args);
 	}
@@ -55,6 +58,9 @@ public class TheLeagueStandardApplication implements CommandLineRunner {
 
         // ADD BOXSCORES FOR COMPLETED GAMES
         // boxscoreDataService.loadAllGameBoxscores();
+
+        // ADD PLAYER SEASONAL STATS BY TEAM
+        // playerSeasonStatsService.loadPlayerSeasonStatsByTeam("5f0b5caf-708b-4300-92f2-53b51d83ec06");
 	}
 }
 
