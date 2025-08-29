@@ -15,7 +15,7 @@ import SeasonStatsTable from "./SeasonStatsTable.jsx";
 function PlayerDetail() {
     const { id } = useParams();
     const { data: player, error } = usePlayer(id);
-    const { data: stats, statsError } = useSeasonStatsByPlayer(id); 
+    const { data: stats, isLoading: statsLoading, statsError } = useSeasonStatsByPlayer(id); 
     const { data: teamColors, isLoading, colorsError } = useTeamColors();
     const { favoritePlayerIDs, togglePlayerFavorite } = useFavorites();
 
@@ -111,7 +111,19 @@ function PlayerDetail() {
                 </div>
             </div>
             
-            <SeasonStatsTable stats={stats}/>
+            {statsLoading ? (
+                <div className="container mt-4">
+                    <h3 className="mt-5">2025 Season Stats</h3>
+                    <Loading />
+                </div>
+            ) : statsError ? (
+                <div className="container mt-4">
+                    <h3 className="mt-5">2025 Season Stats</h3>
+                    <ErrorMessage message={statsError.message} title="Error Loading Season Stats..." />
+                </div>
+            ) : (
+                <SeasonStatsTable stats={stats} />
+            )}
         </>
     );
 }
