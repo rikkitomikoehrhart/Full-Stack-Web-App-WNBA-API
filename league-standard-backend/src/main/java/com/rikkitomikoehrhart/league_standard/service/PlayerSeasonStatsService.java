@@ -50,7 +50,7 @@ public class PlayerSeasonStatsService {
             if (response.statusCode() == 200) {
                 processStatsData(response.body(), teamID);
             } else {
-                System.err.println("Player Season Stats API request failed with status: " + response.statusCode());
+                System.err.println("Player Season Stats API request failed with status: " + response.statusCode() + " --  " + response.headers());
             }
         } catch (Exception e) {
             System.err.println("Error fetching Player Season Stats for team " + teamID + ": " + e.getMessage());
