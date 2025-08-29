@@ -11,6 +11,7 @@ import NewsList from './components/News/NewsList';
 import NewsDetail from './components/News/NewsDetail';
 import { ROUTES } from './constants/routes';
 import GamesDetail from './components/Games/GamesDetail';
+import Footer from './components/UI/Footer/Footer';
 
 function MainSection() {
     
@@ -41,6 +42,10 @@ function MainSection() {
                             </div>
                         </BrowserRouter>
                     </div>
+                </div>
+
+                <div className='row'>
+                    <Footer />
                 </div>
             </div>
         </>
