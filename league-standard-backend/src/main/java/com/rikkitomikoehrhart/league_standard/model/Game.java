@@ -59,14 +59,14 @@ public class Game {
         this.scheduled = scheduled;
     }
 
-    @JsonGetter("scheduled")
-    public String getScheduledForJson() {
-        if (scheduled == null) {
-            return null;
-        }
-
-        return scheduled + " 00:00:00";
-    }
+//    @JsonGetter("scheduled")
+//    public String getScheduledForJson() {
+//        if (scheduled == null) {
+//            return null;
+//        }
+//
+//        return scheduled + " 00:00:00";
+//    }
 
     public String getStatus() {
         return status;

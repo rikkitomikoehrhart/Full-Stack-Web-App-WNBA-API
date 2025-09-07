@@ -42,7 +42,7 @@ function Standings() {
                                 <td><a href={`${ROUTES.TEAMS}/${standing.team.id}`}>{standing.team.market} {standing.team.name}</a></td>
                                 <td>{standing.wins}</td>
                                 <td>{standing.losses}</td>
-                                <td>{((standing.win_pct) * 100).toFixed(1)} %</td>
+                                <td>{((standing.win_pct) * 100).toFixed(1)}%</td>
                                 <td>{standing.points_for}</td>
                                 <td>{standing.points_against}</td>
                                 <td>{standing.point_diff}</td>

@@ -61,21 +61,21 @@ function SeasonStatsTable({ stats }) {
                         </tr>
                         <tr>
                             <th>STEALS:</th>
-                            <td>{stats.steals || "ERR"}</td>
+                            <td>{stats.steals || 0}</td>
                             <th>BLOCKS:</th>
-                            <td>{stats.blocks || "ERR"}</td>
+                            <td>{stats.blocks || 0}</td>
                         </tr>
                         <tr>
                             <th>PERSONAL FOULS:</th>
-                            <td>{stats.personal_fouls || "ERR"}</td>
+                            <td>{stats.personal_fouls || 0}</td>
                             <th>TECHNICAL FOULS:</th>
-                            <td>{stats.tech_fouls || "ERR"}</td>
+                            <td>{stats.tech_fouls || 0}</td>
                         </tr>
                         <tr>
                             <th>FLAGRANT FOULS:</th>
-                            <td>{stats.flagrant_fouls || "ERR"}</td>
+                            <td>{stats.flagrant_fouls || 0}</td>
                             <th>FOULS DRAWN:</th>
-                            <td>{stats.fouls_drawn || "ERR"}</td>
+                            <td>{stats.fouls_drawn || 0}</td>
                         </tr>
                     </tbody>
                 </table>
